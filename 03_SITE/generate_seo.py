@@ -1,0 +1,109 @@
+import os
+import urllib.parse
+
+base_dir = os.path.dirname(os.path.abspath(__file__))
+catA_path = os.path.join(base_dir, 'espacos/bourbon-atibaia-resort.html')
+catB_path = os.path.join(base_dir, 'espacos/expo-center-norte.html')
+
+with open(catA_path, 'r', encoding='utf-8') as f:
+    catA_HTML = f.read()
+
+with open(catB_path, 'r', encoding='utf-8') as f:
+    catB_HTML = f.read()
+
+venuesA = [
+    { 'id': 'almenat-tapestry', 'name': 'Almenat Tapestry Collection', 'short': 'Almenat' },
+    { 'id': 'hotel-vila-rossa', 'name': 'Hotel Vila Rossa', 'short': 'Vila Rossa' },
+    { 'id': 'clara-resorts', 'name': 'Clara Resorts', 'short': 'Clara Resorts' },
+    { 'id': 'windsor-copacabana', 'name': 'Windsor Copacabana', 'short': 'Windsor Copacabana' },
+    { 'id': 'royal-palm-plaza', 'name': 'Royal Palm Plaza Resort', 'short': 'Royal Palm Plaza' },
+    { 'id': 'taua-atibaia', 'name': 'Tauá Hotel & Convention', 'short': 'Tauá Atibaia' },
+    { 'id': 'hotel-fazenda-dona-carolina', 'name': 'Hotel Fazenda Dona Carolina', 'short': 'Dona Carolina' },
+    { 'id': 'beach-hotel-maresias', 'name': 'Beach Hotel Maresias', 'short': 'Beach Hotel Maresias' },
+    { 'id': 'costao-do-santinho', 'name': 'Costão do Santinho Resort', 'short': 'Costão do Santinho' },
+    { 'id': 'lk-design-hotel', 'name': 'LK Design Hotel', 'short': 'LK Design Hotel' },
+    { 'id': 'bourbon-cataratas', 'name': 'Bourbon Cataratas do Iguaçu', 'short': 'Bourbon Cataratas' },
+    { 'id': 'rafain-palace', 'name': 'Rafain Palace Hotel & Convention', 'short': 'Rafain Palace' },
+    { 'id': 'wish-foz', 'name': 'Wish Foz do Iguaçu', 'short': 'Wish Foz do Iguaçu' },
+    { 'id': 'iberostar-praia-do-forte', 'name': 'Iberostar Praia do Forte', 'short': 'Iberostar Praia do Forte' },
+    { 'id': 'costa-do-sauipe', 'name': 'Costa do Sauípe Resorts', 'short': 'Costa do Sauípe' },
+    { 'id': 'tivoli-ecoresort', 'name': 'Tivoli Ecoresort Praia do Forte', 'short': 'Tivoli Ecoresort' },
+    { 'id': 'fiesta-bahia-hotel', 'name': 'Fiesta Bahia Hotel', 'short': 'Fiesta Bahia Hotel' },
+    { 'id': 'windsor-barra', 'name': 'Windsor Barra Convention Center', 'short': 'Windsor Barra' },
+    { 'id': 'fairmont-copacabana', 'name': 'Fairmont Rio de Janeiro', 'short': 'Fairmont Copacabana' },
+    { 'id': 'grand-hyatt-rj', 'name': 'Grand Hyatt Rio de Janeiro', 'short': 'Grand Hyatt RJ' }
+]
+
+venuesB = [
+    { 'id': 'sao-paulo-expo', 'name': 'São Paulo Expo' },
+    { 'id': 'transamerica-expo', 'name': 'Transamerica Expo Center' },
+    { 'id': 'distrito-anhembi', 'name': 'Distrito Anhembi' },
+    { 'id': 'pro-magno', 'name': 'Pro Magno Centro de Eventos' },
+    { 'id': 'riocentro', 'name': 'Riocentro' },
+    { 'id': 'centro-convencoes-salvador', 'name': 'Centro de Convenções Salvador' },
+    { 'id': 'expo-unimed-curitiba', 'name': 'Expo Unimed Curitiba' },
+    { 'id': 'expo-d-pedro', 'name': 'Expo D. Pedro' }
+]
+
+outDir = os.path.join(base_dir, 'espacos')
+sitemapPath = os.path.join(base_dir, 'sitemap.xml')
+
+sitemapUrls = """<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://unionmind.solutions/</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://unionmind.solutions/labs.html</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+"""
+
+def push_sitemap(vid):
+    global sitemapUrls
+    sitemapUrls += f"""  <url>
+    <loc>https://unionmind.solutions/espacos/{vid}.html</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>\n"""
+
+# Generate Category A
+for v in venuesA:
+    content = catA_HTML
+    content = content.replace('Bourbon Atibaia Resort', v['name'])
+    content = content.replace('Bourbon Atibaia', v['short'])
+    content = content.replace(urllib.parse.quote('Bourbon Atibaia Resort'), urllib.parse.quote(v['name']))
+    
+    # Adjust specific sentence
+    content = content.replace('Transformamos o principal resort de São Paulo', f"Transformamos o {v['short']}")
+
+    with open(os.path.join(outDir, f"{v['id']}.html"), 'w', encoding='utf-8') as f:
+        f.write(content)
+    push_sitemap(v['id'])
+
+push_sitemap('bourbon-atibaia-resort')
+
+# Generate Category B
+for v in venuesB:
+    content = catB_HTML
+    content = content.replace('Expo Center Norte', v['name'])
+    content = content.replace(urllib.parse.quote('Expo Center Norte'), urllib.parse.quote(v['name']))
+    
+    with open(os.path.join(outDir, f"{v['id']}.html"), 'w', encoding='utf-8') as f:
+        f.write(content)
+    push_sitemap(v['id'])
+
+push_sitemap('expo-center-norte')
+
+sitemapUrls += "</urlset>"
+
+with open(sitemapPath, 'w', encoding='utf-8') as f:
+    f.write(sitemapUrls)
+
+print(f"[Union Labs] Python script executado. Geradas {len(venuesA) + len(venuesB)} landing pages automaticamente! Sitemap atualizado.")

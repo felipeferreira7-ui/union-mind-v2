@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+# Removidos Disallows de pastas deletadas para forçar Google a ver o 404
+Disallow: /INTERNO/
+Disallow: /site-backup/
+
+Sitemap: https://unionmind.solutions/sitemap.xml
