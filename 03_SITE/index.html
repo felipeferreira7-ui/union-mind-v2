@@ -656,8 +656,13 @@
         function initSmartForm() {
             const urlParams = new URLSearchParams(window.location.search);
             const type = urlParams.get('type');
+            const venue = urlParams.get('venue');
             const groupConvention = document.getElementById('group-convention');
             const groupExpo = document.getElementById('group-expo');
+
+            if (venue) {
+                document.getElementById('event_name').value = venue;
+            }
 
             if (type === 'expo') {
                 groupConvention.style.display = 'none';

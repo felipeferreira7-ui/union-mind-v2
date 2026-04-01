@@ -84,9 +84,10 @@ for v in venuesA:
     # Adjust specific sentence
     content = content.replace('Transformamos o principal resort de São Paulo', f"Transformamos o {v['short']}")
 
-    # Point CTAs to the smart form on Home with context
-    content = content.replace('href="/#configurador"', 'href="../index.html?type=resort#configurador"')
-    content = content.replace('href="/"', 'href="../index.html"')
+    # Point CTAs to the smart form on Home with context and pre-fill
+    venue_name_enc = urllib.parse.quote(v['name'])
+    content = content.replace('href="../index.html?type=resort#configurador"', f'href="../index.html?type=resort&venue={venue_name_enc}#configurador"')
+    content = content.replace('href="../index.html"', 'href="../index.html"')
 
     with open(os.path.join(outDir, f"{v['id']}.html"), 'w', encoding='utf-8') as f:
         f.write(content)
@@ -101,8 +102,9 @@ for v in venuesB:
     content = content.replace(urllib.parse.quote('Expo Center Norte'), urllib.parse.quote(v['name']))
     content = content.replace('[URL_SLUG]', v['id'])
     
-    # Point CTAs to the smart form on Home with Expo context
-    content = content.replace('href=\"/#configurador\"', 'href=\"../index.html?type=expo#configurador\"')
+    # Point CTAs to the smart form on Home with Expo context and pre-fill
+    venue_name_enc = urllib.parse.quote(v['name'])
+    content = content.replace('href=\"/#configurador\"', f'href=\"../index.html?type=expo&venue={venue_name_enc}#configurador\"')
     content = content.replace('href=\"/\"', 'href=\"../index.html\"')
     
     with open(os.path.join(outDir, f"{v['id']}.html"), 'w', encoding='utf-8') as f:
