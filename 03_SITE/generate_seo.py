@@ -79,6 +79,7 @@ for v in venuesA:
     content = content.replace('Bourbon Atibaia Resort', v['name'])
     content = content.replace('Bourbon Atibaia', v['short'])
     content = content.replace(urllib.parse.quote('Bourbon Atibaia Resort'), urllib.parse.quote(v['name']))
+    content = content.replace('[URL_SLUG]', v['id'])
     
     # Adjust specific sentence
     content = content.replace('Transformamos o principal resort de São Paulo', f"Transformamos o {v['short']}")
@@ -94,6 +95,7 @@ for v in venuesB:
     content = catB_HTML
     content = content.replace('Expo Center Norte', v['name'])
     content = content.replace(urllib.parse.quote('Expo Center Norte'), urllib.parse.quote(v['name']))
+    content = content.replace('[URL_SLUG]', v['id'])
     
     with open(os.path.join(outDir, f"{v['id']}.html"), 'w', encoding='utf-8') as f:
         f.write(content)
