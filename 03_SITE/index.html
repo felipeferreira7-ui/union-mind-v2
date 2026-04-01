@@ -362,12 +362,17 @@
         <section class="configurator" id="configurador">
             <div class="container">
                 <div class="config-container">
-                    <h2 class="config-title"> <span data-i18n="config-h2">Cálculo de Viabilidade</span> <br><span
+                    <h2 class="config-title"> <span data-i18n="config-h2">Consultoria de Escopo</span> <br><span
                             class="accent">IA Engine</span></h2>
                     <p class="config-subtitle" data-i18n="config-p">Nossa Engine analisa complexidade, público e
                         deadlines para desenhar o modelo operacional ideal para o seu evento em segundos.</p>
 
                     <form id="config-form" class="config-form">
+                        <!-- CAMPO NOVO: NOME DO EVENTO / LOCAL -->
+                        <div class="step">
+                            <label data-i18n="config-label-0">00. Nome da Feira / Local do Evento</label>
+                            <input type="text" id="event_name" name="nome_evento" placeholder="Ex: Rio2C, Web Summit, Bourbon Atibaia..." required>
+                        </div>
                         <div class="step">
                             <label data-i18n="config-label-1">01. Foco Estratégico</label>
                             <select id="focus" name="foco_estrategico">
@@ -381,7 +386,7 @@
                             </select>
                         </div>
 
-                        <div class="step">
+                        <div class="step" id="group-convention">
                             <label data-i18n="config-label-2">02. Perfil do Evento / Público</label>
                             <select id="audience" name="perfil_evento">
                                 <option value="exec" data-i18n="config-opt-2-1">Alta Liderança (C-Level / VIP)</option>
@@ -391,6 +396,18 @@
                                 </option>
                                 <option value="digital" data-i18n="config-opt-2-4">Evento Híbrido / Digital Experience
                                 </option>
+                            </select>
+                        </div>
+
+                        <!-- GRUPO DINÂMICO PARA EXPO (HIDDEN BY DEFAULT) -->
+                        <div class="step" id="group-expo" style="display: none;">
+                            <label data-i18n="config-label-expo">02. Tamanho do Estande / Feira</label>
+                            <select id="expo_size" name="tamanho_expo">
+                                <option value="booth-50">Estande até 50m²</option>
+                                <option value="booth-300">Estande até 300m²</option>
+                                <option value="booth-1000">Estande até 1.000m²</option>
+                                <option value="fair-15">Feira de Negócios (até 15 estandes)</option>
+                                <option value="fair-50">Feira de Negócios (até 50 estandes)</option>
                             </select>
                         </div>
 
@@ -522,10 +539,12 @@
                 "case-2-tag": "Convenção de Vendas",
                 "case-3-tag": "Convenção da Marca",
                 "case-4-tag": "Convenção de Vendas",
-                "config-h2": "Cálculo de Viabilidade",
+                "config-h2": "Consultoria de Escopo",
                 "config-p": "Nossa Engine analisa complexidade, público e deadlines para desenhar o modelo operacional ideal para o seu evento em segundos.",
+                "config-label-0": "00. Nome da Feira / Local do Evento",
                 "config-label-1": "01. Foco Estratégico",
                 "config-label-2": "02. Perfil do Evento / Público",
+                "config-label-expo": "02. Tamanho do Estande / Feira",
                 "config-label-3": "03. Complexidade de Execução",
                 "config-label-4": "04. Seu E-mail Corporativo",
                 "config-opt-1-1": "Impulsionar Vendas e Performance",
@@ -541,7 +560,7 @@
                 "config-opt-3-3": "White Glove (Detalhe e Produção Premium)",
                 "config-submit": "Iniciar Análise de IA",
                 "footer-tagline": "BOUTIQUE SOUL, AI ENGINE",
-                "alert-success": "Análise Concluída! Nossa IA Engine desenhou o modelo operacional ideal. Um de nossos especialistas boutique entrará em contato em instantes.",
+                "alert-success": "Análise Concluída! Nossa IA Engine desenhou o modelo operacional ideal. Um de nossos especialistas boutique entrará em contato para apresentar o diagnóstico técnico do seu escopo.",
                 "btn-processing": "PROCESSANDO ENGINE...",
                 "btn-received": "SOLICITAÇÃO RECEBIDA"
             },
@@ -576,10 +595,12 @@
                 "case-2-tag": "Sales Convention",
                 "case-3-tag": "Brand Convention",
                 "case-4-tag": "Sales Convention",
-                "config-h2": "Feasibility Calculation",
+                "config-h2": "Scoping Consultancy",
                 "config-p": "Our Engine analyzes complexity, audience and deadlines to design the ideal operational model for your event in seconds.",
+                "config-label-0": "00. Exhibition Name / Event Venue",
                 "config-label-1": "01. Strategic Focus",
                 "config-label-2": "02. Event Profile / Audience",
+                "config-label-expo": "02. Booth / Trade Show Size",
                 "config-label-3": "03. Execution Complexity",
                 "config-label-4": "04. Corporate Email",
                 "config-opt-1-1": "Boost Sales and Performance",
@@ -595,7 +616,9 @@
                 "config-opt-3-3": "White Glove (Detailed & Premium Production)",
                 "config-submit": "Start AI Analysis",
                 "footer-tagline": "BOUTIQUE SOUL, AI ENGINE",
-                "alert-success": "Analysis Completed! Our AI Engine has designed the ideal operational model. One of our boutique specialists will contact you shortly.",
+                "config-label-3": "03. Execution Complexity",
+                "config-label-4": "04. Corporate Email",
+                "alert-success": "Analysis Completed! Our IA Engine has designed the ideal operational model. One of our boutique specialists will contact you shortly to present the technical diagnosis of your scope.",
                 "btn-processing": "PROCESSING ENGINE...",
                 "btn-received": "REQUEST RECEIVED"
             }
@@ -630,8 +653,28 @@
             }
         }
 
+        function initSmartForm() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const type = urlParams.get('type');
+            const groupConvention = document.getElementById('group-convention');
+            const groupExpo = document.getElementById('group-expo');
+
+            if (type === 'expo') {
+                groupConvention.style.display = 'none';
+                groupExpo.style.display = 'block';
+                // Remove required from convention select to allow submission
+                document.getElementById('audience').removeAttribute('required');
+                document.getElementById('expo_size').setAttribute('required', 'required');
+            } else {
+                groupConvention.style.display = 'block';
+                groupExpo.style.display = 'none';
+                document.getElementById('expo_size').removeAttribute('required');
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             switchLanguage(currentLang);
+            initSmartForm();
         });
 
         document.getElementById('config-form').addEventListener('submit', function (e) {

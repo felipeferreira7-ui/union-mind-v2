@@ -84,6 +84,10 @@ for v in venuesA:
     # Adjust specific sentence
     content = content.replace('Transformamos o principal resort de São Paulo', f"Transformamos o {v['short']}")
 
+    # Point CTAs to the smart form on Home with context
+    content = content.replace('href="/#configurador"', 'href="../index.html?type=resort#configurador"')
+    content = content.replace('href="/"', 'href="../index.html"')
+
     with open(os.path.join(outDir, f"{v['id']}.html"), 'w', encoding='utf-8') as f:
         f.write(content)
     push_sitemap(v['id'])
@@ -96,6 +100,10 @@ for v in venuesB:
     content = content.replace('Expo Center Norte', v['name'])
     content = content.replace(urllib.parse.quote('Expo Center Norte'), urllib.parse.quote(v['name']))
     content = content.replace('[URL_SLUG]', v['id'])
+    
+    # Point CTAs to the smart form on Home with Expo context
+    content = content.replace('href=\"/#configurador\"', 'href=\"../index.html?type=expo#configurador\"')
+    content = content.replace('href=\"/\"', 'href=\"../index.html\"')
     
     with open(os.path.join(outDir, f"{v['id']}.html"), 'w', encoding='utf-8') as f:
         f.write(content)

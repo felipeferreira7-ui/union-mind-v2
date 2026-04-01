@@ -147,6 +147,7 @@ nav a:hover {
     line-height: 1 !important;
     letter-spacing: -0.05em !important;
     text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+    text-wrap: balance;
 }
 
 .hero-subtitle {
@@ -203,6 +204,7 @@ nav a:hover {
     margin-bottom: 4rem;
     letter-spacing: -0.04em;
     line-height: 1;
+    text-wrap: balance;
 }
 
 .cases-section {
