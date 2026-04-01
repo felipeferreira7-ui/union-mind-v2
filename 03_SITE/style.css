@@ -253,7 +253,7 @@ nav a:hover {
 /* Hero Section */
 .hero {
     padding: 240px 0 180px;
-    background: linear-gradient(to bottom, rgba(5, 5, 5, 0.75) 0%, rgba(5, 5, 5, 1) 100%), url('assets/hero-bg.webp');
+    background: linear-gradient(to bottom, rgba(5, 5, 5, 0.75) 0%, rgba(5, 5, 5, 1) 100%), url('assets/hero/hero-bg.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -565,7 +565,7 @@ input {
 /* Labs Specific Styles */
 .labs-hero {
     padding: 240px 0 160px;
-    background: linear-gradient(to bottom, rgba(5, 5, 5, 0.85) 0%, rgba(5, 5, 5, 1) 100%), url('assets/hero-bg.webp');
+    background: linear-gradient(to bottom, rgba(5, 5, 5, 0.85) 0%, rgba(5, 5, 5, 1) 100%), url('assets/hero/hero-bg.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
