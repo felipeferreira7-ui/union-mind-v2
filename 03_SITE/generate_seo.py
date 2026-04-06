@@ -2,8 +2,8 @@ import os
 import urllib.parse
 
 base_dir = os.path.dirname(os.path.abspath(__file__))
-catA_path = os.path.join(base_dir, 'espacos/bourbon-atibaia-resort.html')
-catB_path = os.path.join(base_dir, 'espacos/expo-center-norte.html')
+catA_path = os.path.join(base_dir, 'templates/template_resort.html')
+catB_path = os.path.join(base_dir, 'templates/template_expo.html')
 
 with open(catA_path, 'r', encoding='utf-8') as f:
     catA_HTML = f.read()
@@ -31,7 +31,8 @@ venuesA = [
     { 'id': 'fiesta-bahia-hotel', 'name': 'Fiesta Bahia Hotel', 'short': 'Fiesta Bahia Hotel' },
     { 'id': 'windsor-barra', 'name': 'Windsor Barra Convention Center', 'short': 'Windsor Barra' },
     { 'id': 'fairmont-copacabana', 'name': 'Fairmont Rio de Janeiro', 'short': 'Fairmont Copacabana' },
-    { 'id': 'grand-hyatt-rj', 'name': 'Grand Hyatt Rio de Janeiro', 'short': 'Grand Hyatt RJ' }
+    { 'id': 'grand-hyatt-rj', 'name': 'Grand Hyatt Rio de Janeiro', 'short': 'Grand Hyatt RJ' },
+    { 'id': 'bourbon-atibaia-resort', 'name': 'Bourbon Atibaia Resort', 'short': 'Bourbon Atibaia' }
 ]
 
 venuesB = [
@@ -42,7 +43,8 @@ venuesB = [
     { 'id': 'riocentro', 'name': 'Riocentro' },
     { 'id': 'centro-convencoes-salvador', 'name': 'Centro de Convenções Salvador' },
     { 'id': 'expo-unimed-curitiba', 'name': 'Expo Unimed Curitiba' },
-    { 'id': 'expo-d-pedro', 'name': 'Expo D. Pedro' }
+    { 'id': 'expo-d-pedro', 'name': 'Expo D. Pedro' },
+    { 'id': 'expo-center-norte', 'name': 'Expo Center Norte' }
 ]
 
 outDir = os.path.join(base_dir, 'espacos')
@@ -93,8 +95,6 @@ for v in venuesA:
         f.write(content)
     push_sitemap(v['id'])
 
-push_sitemap('bourbon-atibaia-resort')
-
 # Generate Category B
 for v in venuesB:
     content = catB_HTML
@@ -110,8 +110,6 @@ for v in venuesB:
     with open(os.path.join(outDir, f"{v['id']}.html"), 'w', encoding='utf-8') as f:
         f.write(content)
     push_sitemap(v['id'])
-
-push_sitemap('expo-center-norte')
 
 sitemapUrls += "</urlset>"
 
