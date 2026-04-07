@@ -11,6 +11,10 @@ with open(catA_path, 'r', encoding='utf-8') as f:
 with open(catB_path, 'r', encoding='utf-8') as f:
     catB_HTML = f.read()
 
+catC_path = os.path.join(base_dir, 'templates/template_urbano.html')
+with open(catC_path, 'r', encoding='utf-8') as f:
+    catC_HTML = f.read()
+
 venuesA = [
     { 'id': 'almenat-tapestry', 'name': 'Almenat Tapestry Collection', 'short': 'Almenat' },
     { 'id': 'hotel-vila-rossa', 'name': 'Hotel Vila Rossa', 'short': 'Vila Rossa' },
@@ -45,6 +49,20 @@ venuesB = [
     { 'id': 'expo-unimed-curitiba', 'name': 'Expo Unimed Curitiba' },
     { 'id': 'expo-d-pedro', 'name': 'Expo D. Pedro' },
     { 'id': 'expo-center-norte', 'name': 'Expo Center Norte' }
+]
+
+# Categoria C: Espaços Urbanos Premium SP
+venuesC = [
+    { 'id': 'um-rooftop', 'name': 'UM Rooftop', 'bairro': 'Vila Olímpia' },
+    { 'id': 'wtc-events-center', 'name': 'WTC Events Center', 'bairro': 'Berrini' },
+    { 'id': 'grupo-bisutti', 'name': 'Grupo Bisutti', 'bairro': 'Vila Olímpia' },
+    { 'id': 'jk-iguatemi-eventos', 'name': 'JK Iguatemi Espaços', 'bairro': 'Jardins' },
+    { 'id': 'palacio-tangara', 'name': 'Palácio Tangará', 'bairro': 'Morumbi' },
+    { 'id': 'arca-eventos-pinheiros', 'name': 'Arca Eventos Pinheiros', 'bairro': 'Pinheiros' },
+    { 'id': 'grand-hyatt-sao-paulo', 'name': 'Grand Hyatt São Paulo', 'bairro': 'Vila Olímpia' },
+    { 'id': 'blue-tree-faria-lima', 'name': 'Blue Tree Premium Faria Lima', 'bairro': 'Pinheiros' },
+    { 'id': 'infinito-na-vela-leopoldina', 'name': 'Infinito na Vela Leopoldina', 'bairro': 'Leopoldina' },
+    { 'id': 'renaissance-sao-paulo', 'name': 'Renaissance São Paulo Hotel', 'bairro': 'Bela Vista' }
 ]
 
 outDir = os.path.join(base_dir, 'espacos')
@@ -111,9 +129,24 @@ for v in venuesB:
         f.write(content)
     push_sitemap(v['id'])
 
+# Generate Category C (Urban Spaces SP)
+for v in venuesC:
+    content = catC_HTML
+    content = content.replace('[VENUE_NAME]', v['name'])
+    content = content.replace('[VENUE_BAIRRO]', v['bairro'])
+    content = content.replace('[URL_SLUG]', v['id'])
+    venue_wa = urllib.parse.quote(v['name'])
+    venue_enc = urllib.parse.quote(v['name'])
+    content = content.replace('[VENUE_WA]', venue_wa)
+    content = content.replace('[VENUE_ENC]', venue_enc)
+
+    with open(os.path.join(outDir, f"{v['id']}.html"), 'w', encoding='utf-8') as f:
+        f.write(content)
+    push_sitemap(v['id'])
+
 sitemapUrls += "</urlset>"
 
 with open(sitemapPath, 'w', encoding='utf-8') as f:
     f.write(sitemapUrls)
 
-print(f"[Union Labs] Python script executado. Geradas {len(venuesA) + len(venuesB)} landing pages automaticamente! Sitemap atualizado.")
+print(f"[Union Labs] Python script executado. Geradas {len(venuesA) + len(venuesB) + len(venuesC)} landing pages automaticamente! Sitemap atualizado.")
