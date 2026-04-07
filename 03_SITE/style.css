@@ -812,6 +812,16 @@ input {
         padding: 3rem 1.5rem;
     }
 
+    select, input {
+        font-size: 1.1rem;
+        padding: 1rem 0;
+        margin-bottom: 2rem;
+    }
+
+    .config-title {
+        font-size: 2rem;
+    }
+
     .footer-inner {
         flex-direction: column;
         text-align: center;
