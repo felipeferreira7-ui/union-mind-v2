@@ -81,6 +81,38 @@
       ]
     }
     </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Como a inteligência artificial ajuda no planejamento de eventos corporativos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A inteligência artificial otimiza o planejamento operacional de eventos automatizando tarefas repetitivas. Na Union Mind, usamos IA para cruzar escopos, prever cronogramas de montagem, analisar regras de centros de convenções e mapear fornecedores em minutos, reduzindo drasticamente o risco de falhas humanas e sobrecarga orçamentária."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O que é o motor de IA da Union Mind?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O Union Labs é o nosso braço de tecnologia que atua como um 'AI Engine' interno. Desenvolvemos desde MVPs ágeis e aplicativos de RSVP para eventos até agentes autônomos que filtram convidados e respondem dúvidas logísticas via WhatsApp em tempo real."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "A tecnologia e a inteligência artificial substituem o atendimento humano da agência?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não. O planejamento por IA potencializa nossa eficiência, mas não substitui nosso DNA boutique. A tecnologia é usada no backoffice para nos dar velocidade e previsibilidade técnica, permitindo que nosso time sênior foque 100% no relacionamento estratégico, criatividade e na experiência ao vivo do cliente."
+          }
+        }
+      ]
+    }
+    </script>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -136,6 +168,9 @@
                     Somos o Product Studio para marcas ambiciosas e startups corporativas. Do design de MVP à automação
                     com IA, entregamos produtos escaláveis com a urgência que você exige.
                 </h2>
+                <p style="margin: 1.5rem auto 0; font-size: 0.95rem; color: #888; max-width: 800px; line-height: 1.6;" data-i18n="hero-answer">
+                    O Union Labs é o braço de tecnologia e inovação da agência de eventos corporativos Union Mind. Nosso laboratório aplica inteligência artificial e desenvolve plataformas web (EventTech) para acelerar o credenciamento de grandes convenções, engajar participantes e automatizar o backoffice de produção.
+                </p>
                 <div style="margin-top: 3rem;">
                     <a href="#contact" class="btn-cta" style="font-size: 1rem; padding: 1.2rem 3rem;"><span
                             data-i18n="hero-btn">Consultoria de Escopo Gratuita</span></a>
@@ -246,6 +281,34 @@
                 </div>
             </div>
         </section>
+
+        <!-- GEO: FAQ Section (visível, alinhada com FAQPage schema) -->
+        <section id="faq" style="padding: 6rem 0; background: #050505; border-top: 1px solid #1a1a1a;">
+            <div class="container" style="max-width: 800px; margin: 0 auto;">
+                <h2 class="section-title" style="text-align: center; margin-bottom: 3rem;" data-i18n="faq-title">Tecnologia & IA em Eventos</h2>
+
+                <div class="faq-item" style="border-bottom: 1px solid #1a1a1a; padding: 1.5rem 0;">
+                    <details>
+                        <summary style="cursor: pointer; font-weight: 600; font-size: 1.05rem; color: #fff; list-style: none; display: flex; justify-content: space-between; align-items: center;" data-i18n="faq-q1">Como a inteligência artificial ajuda no planejamento de eventos corporativos?</summary>
+                        <p style="color: #999; margin-top: 1rem; line-height: 1.7; font-size: 0.95rem;" data-i18n="faq-a1">A inteligência artificial otimiza o planejamento operacional de eventos automatizando tarefas repetitivas. Na Union Mind, usamos IA para cruzar escopos, prever cronogramas de montagem, analisar regras de centros de convenções e mapear fornecedores em minutos, reduzindo drasticamente o risco de falhas humanas e sobrecarga orçamentária.</p>
+                    </details>
+                </div>
+
+                <div class="faq-item" style="border-bottom: 1px solid #1a1a1a; padding: 1.5rem 0;">
+                    <details>
+                        <summary style="cursor: pointer; font-weight: 600; font-size: 1.05rem; color: #fff; list-style: none; display: flex; justify-content: space-between; align-items: center;" data-i18n="faq-q2">O que é o motor de IA da Union Mind?</summary>
+                        <p style="color: #999; margin-top: 1rem; line-height: 1.7; font-size: 0.95rem;" data-i18n="faq-a2">O Union Labs é o nosso braço de tecnologia que atua como um 'AI Engine' interno. Desenvolvemos desde MVPs ágeis e aplicativos de RSVP para eventos até agentes autônomos que filtram convidados e respondem dúvidas logísticas via WhatsApp em tempo real.</p>
+                    </details>
+                </div>
+
+                <div class="faq-item" style="border-bottom: 1px solid #1a1a1a; padding: 1.5rem 0;">
+                    <details>
+                        <summary style="cursor: pointer; font-weight: 600; font-size: 1.05rem; color: #fff; list-style: none; display: flex; justify-content: space-between; align-items: center;" data-i18n="faq-q3">A tecnologia e a inteligência artificial substituem o atendimento humano da agência?</summary>
+                        <p style="color: #999; margin-top: 1rem; line-height: 1.7; font-size: 0.95rem;" data-i18n="faq-a3">Não. O planejamento por IA potencializa nossa eficiência, mas não substitui nosso DNA boutique. A tecnologia é usada no backoffice para nos dar velocidade e previsibilidade técnica, permitindo que nosso time sênior foque 100% no relacionamento estratégico, criatividade e na experiência ao vivo do cliente.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer style="padding: 40px 0; border-top: 1px solid var(--border); background: #000;">
@@ -294,7 +357,15 @@
                 "form-btn": "Enviar Briefing para Engenharia",
                 "btn-processing": "Enviando...",
                 "btn-received": "Recebido!",
-                "alert-success": "Dados recebidos! Nossa engenharia entrará em contato com você em breve."
+                "alert-success": "Dados recebidos! Nossa engenharia entrará em contato com você em breve.",
+                "hero-answer": "O Union Labs é o braço de tecnologia e inovação da agência de eventos corporativos Union Mind. Nosso laboratório aplica inteligência artificial e desenvolve plataformas web (EventTech) para acelerar o credenciamento de grandes convenções, engajar participantes e automatizar o backoffice de produção.",
+                "faq-title": "Tecnologia & IA em Eventos",
+                "faq-q1": "Como a inteligência artificial ajuda no planejamento de eventos corporativos?",
+                "faq-a1": "A inteligência artificial otimiza o planejamento operacional de eventos automatizando tarefas repetitivas. Na Union Mind, usamos IA para cruzar escopos, prever cronogramas de montagem, analisar regras de centros de convenções e mapear fornecedores em minutos, reduzindo drasticamente o risco de falhas humanas e sobrecarga orçamentária.",
+                "faq-q2": "O que é o motor de IA da Union Mind?",
+                "faq-a2": "O Union Labs é o nosso braço de tecnologia que atua como um 'AI Engine' interno. Desenvolvemos desde MVPs ágeis e aplicativos de RSVP para eventos até agentes autônomos que filtram convidados e respondem dúvidas logísticas via WhatsApp em tempo real.",
+                "faq-q3": "A tecnologia e a inteligência artificial substituem o atendimento humano da agência?",
+                "faq-a3": "Não. O planejamento por IA potencializa nossa eficiência, mas não substitui nosso DNA boutique. A tecnologia é usada no backoffice para nos dar velocidade e previsibilidade técnica, permitindo que nosso time sênior foque 100% no relacionamento estratégico, criatividade e na experiência ao vivo do cliente."
             },
             "en": {
                 "nav-agency": "The Agency",
@@ -327,7 +398,15 @@
                 "form-btn": "Send Brief to Engineering",
                 "btn-processing": "Sending...",
                 "btn-received": "Received!",
-                "alert-success": "Data received! Our engineering team will contact you shortly."
+                "alert-success": "Data received! Our engineering team will contact you shortly.",
+                "hero-answer": "Union Labs is the technology and innovation arm of the corporate events agency Union Mind. Our laboratory applies artificial intelligence and develops web platforms (EventTech) to accelerate the accreditation of large conventions, engage participants, and automate production backoffice.",
+                "faq-title": "Technology & AI in Events",
+                "faq-q1": "How does artificial intelligence help in corporate event planning?",
+                "faq-a1": "Artificial intelligence optimizes operational event planning by automating repetitive tasks. At Union Mind, we use AI to cross-reference scopes, predict assembly schedules, analyze convention center rules, and map suppliers in minutes, drastically reducing the risk of human error and budget overruns.",
+                "faq-q2": "What is the Union Mind AI engine?",
+                "faq-a2": "Union Labs is our technology arm acting as an internal 'AI Engine'. We develop everything from agile MVPs and event RSVP apps to autonomous agents that filter guests and answer logistical questions via WhatsApp in real-time.",
+                "faq-q3": "Do technology and artificial intelligence replace the agency's human service?",
+                "faq-a3": "No. AI planning boosts our efficiency, but it doesn't replace our boutique DNA. Technology is used in the backoffice to give us speed and technical predictability, allowing our senior team to focus 100% on strategic relationships, creativity, and the live customer experience."
             }
         };
 
