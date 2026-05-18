@@ -1,6 +1,43 @@
+# =============================================
+# Union Mind - robots.txt (GEO Optimized)
+# Atualizado: 2026-05-18
+# =============================================
+
+# --- Bots de IA para Busca/Citação (LIBERADOS) ---
+# Estes bots são usados pelas IAs para responder perguntas dos usuários.
+# Queremos ser citados como fonte.
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# --- Bots de IA para Treinamento (BLOQUEADOS) ---
+# Estes bots coletam conteúdo para treinar modelos.
+# Protegemos nossa propriedade intelectual.
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+# --- Crawlers Tradicionais (Google, Bing, etc.) ---
 User-agent: *
 Allow: /
-# Removidos Disallows de pastas deletadas para forçar Google a ver o 404
 Disallow: /INTERNO/
 Disallow: /site-backup/
 
