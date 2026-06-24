@@ -1,9 +1,15 @@
-node_modules/
-.DS_Store
-.gemini/
-site-backup/
-assets/backup/
-assets/case-natura-new.png
-*.ai
-PROJETOS/
-02_PROSPECCAO/UNION-GTM-OS/
+# ===================================
+# UNION Mind - .gitignore
+# Apenas o 03_SITE é versionado
+# ===================================
+
+# Ignorar TUDO por padrão
+/*
+
+# Excluir (permitir) apenas a pasta do site
+!03_SITE/
+!.gitignore
+
+# Dentro do site, ignorar arquivos temporários
+03_SITE/*.log
+03_SITE/node_modules/
