@@ -83,7 +83,14 @@
         "addressCountry": "BR",
         "addressRegion": "SP"
       },
-      "areaServed": "São Paulo",
+      "areaServed": ["São Paulo", "Rio de Janeiro", "Brasil"],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "São Paulo",
+        "addressRegion": "SP",
+        "addressCountry": "BR",
+        "telephone": "+5511947684604"
+      },
       "sameAs": [
         "https://www.linkedin.com/company/unionmindsolutions"
       ],
@@ -96,7 +103,14 @@
         "Automec 2026", 
         "APAS Show", 
         "Expo Revestir", 
-        "Live Marketing"
+        "Live Marketing",
+        "como organizar uma convenção de vendas",
+        "custo de estande em feira corporativa",
+        "o que é live marketing",
+        "agência de eventos Rio de Janeiro",
+        "evento corporativo de final de ano SP",
+        "produtora de eventos São Paulo",
+        "convenção de vendas agência"
       ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
@@ -218,8 +232,7 @@
     }
     </script>
 
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <!-- Google Fonts already loaded above — duplicate removed -->
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -268,10 +281,12 @@
             <div class="container">
                 <span class="badge-10anos" data-i18n="hero-badge">10 anos de mercado</span>
                 <h1 class="hero-title">
-                    <span data-i18n="hero-h1">Sua agência parceira de <span class="accent">eventos corporativos</span> com atendimento boutique, inteligência de dados, time sênior e qualidade operacional.</span>
+                    <span data-i18n="hero-h1">10 anos gerando <span class="accent">experiências que movem negócio</span>, junto com quem faz acontecer.</span>
                 </h1>
-                <h2 class="hero-subtitle" data-i18n="hero-h2">Somos o braço direito na criação de experiências
-                    impulsionadoras.</h2>
+                <h2 class="hero-subtitle" data-i18n="hero-h2">Convenções, feiras, eventos em geral são mais do que eventos. São os momentos em que a sua marca se constrói. Queremos ser o parceiro de confiança nessa jornada.</h2>
+                <div style="margin-top: 2.5rem;">
+                    <a href="#configurador" class="btn-cta" style="display:inline-flex; align-items:center; gap:0.5rem; font-size:1rem; padding:1.1rem 2.5rem;">Fale com um Especialista <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                </div>
             </div>
         </section>
 
@@ -284,17 +299,23 @@
                 <div class="logo-item" title="Natura">
                     <img src="assets/logos/natura.svg" alt="Natura">
                 </div>
+                <div class="logo-item" title="Danone">
+                    <img src="assets/logos/danone.png" alt="Danone">
+                </div>
+                <div class="logo-item" title="Danone Nutricia">
+                    <img src="assets/logos/danone-nutricia.png" alt="Danone Nutricia">
+                </div>
                 <div class="logo-item" title="Auren Energia">
                     <img src="assets/logos/auren.svg" alt="Auren Energia">
                 </div>
-                <div class="logo-item" title="Diase Construtora">
-                    <img src="assets/logos/diase.png" alt="Diase Construtora" class="diase-logo">
+                <div class="logo-item" title="Toyota">
+                    <img src="assets/logos/toyota.svg" alt="Toyota">
                 </div>
                 <div class="logo-item" title="Armarinhos Fernando">
                     <img src="assets/logos/armarinhos.png" alt="Armarinhos Fernando">
                 </div>
-                <div class="logo-item" title="Toyota">
-                    <img src="assets/logos/toyota.svg" alt="Toyota">
+                <div class="logo-item" title="Diase Construtora">
+                    <img src="assets/logos/diase.png" alt="Diase Construtora" class="diase-logo">
                 </div>
                 <div class="logo-item" title="Eqlibri">
                     <img src="assets/logos/eqlibri.png" alt="Eqlibri">
@@ -327,9 +348,8 @@
                     </div>
                     <div class="expertise-item">
                         <span class="expertise-icon">◇</span>
-                        <h3 data-i18n="exp-4-h3">IA & Live Experience</h3>
-                        <p data-i18n="exp-4-p">Utilizamos IA Engine para otimizar processos e criar ativações
-                            tecnológicas de alta performance.</p>
+                        <h3 data-i18n="exp-4-h3">IA como Acelerador</h3>
+                        <p data-i18n="exp-4-p">Nosso Motor de IA cruza o cronograma de montagem, as regras do venue e o escopo — o que levaria 2 dias de planilha, resolvemos rápido.</p>
                     </div>
                 </div>
             </div>
@@ -693,9 +713,9 @@
                 "nav-labs": "Union Labs",
                 "nav-cta": "Fale com um Especialista",
                 "hero-badge": "10 anos de mercado",
-                "hero-h1": "Sua agência parceira de <span class=\"accent\">eventos corporativos</span> com atendimento boutique, inteligência de dados, time sênior e qualidade operacional.",
-                "hero-h2": "A agência boutique definitiva para convenções, meetings, formaturas e eventos de marca.",
-                "expertise-h2": "De convenções a sampling: Excelência em cada evento",
+                "hero-h1": "10 anos gerando <span class=\"accent\">experiências que movem negócio</span>, junto com quem faz acontecer.",
+                "hero-h2": "Convenções, feiras, eventos em geral são mais do que eventos. São os momentos em que a sua marca se constrói. Queremos ser o parceiro de confiança nessa jornada.",
+                "expertise-h2": "A excelência em cada ponto de contato",
                 "exp-1-h3": "Eventos Corporativos & Meetings",
                 "exp-1-p": "Especialistas em convenções de vendas, rituais de liderança, formaturas corporativas e meetings de alto impacto.",
                 "exp-2-h3": "Eventos de Marca & Sampling",
@@ -703,7 +723,7 @@
                 "exp-3-h3": "Estandes & Cenografia Flex",
                 "exp-3-p": "Arquitetura efêmera inteligente, projetada para maximizar fluxo, captura de leads e ROI em feiras.",
                 "exp-4-h3": "IA como Acelerador",
-                "exp-4-p": "A tecnologia nunca sobrepõe a relação. O Motor de IA é nossa ferramenta secreta para viabilizar entregas ágeis e hiper-personalizadas.",
+                "exp-4-p": "Nosso Motor de IA cruza o cronograma de montagem, as regras do venue e o escopo — o que levaria 2 dias de planilha, resolvemos rápido.",
                 "fairs-h2": "Especialistas em Estandes nas principais feiras de SP:",
                 "method-intro": "Somos uma <span class=\"accent\">agência boutique</span> por escolha. Não queremos ser a maior fábrica de eventos; queremos ser a melhor parceira estratégica do seu negócio.",
                 "method-h2": "Como a IA transforma sua experiência",
@@ -774,17 +794,17 @@
                 "nav-labs": "Union Labs",
                 "nav-cta": "Talk to an Expert",
                 "hero-badge": "10 years in the market",
-                "hero-h1": "Your partner agency for <span class=\"accent\">corporate events</span> with boutique service, data intelligence, senior-level team and operational excellence.",
-                "hero-h2": "We are your right-hand partner in creating driving experiences.",
+                "hero-h1": "10 years generating <span class=\"accent\">experiences that drive business</span>, alongside those who make it happen.",
+                "hero-h2": "Conventions, trade shows, events — they are more than events. They are the moments where your brand is built. We want to be the trusted partner on that journey.",
                 "expertise-h2": "Excellence in every touchpoint",
-                "exp-1-h3": "Exclusive Events",
-                "exp-1-p": "We build together with you. From planning to execution of conventions and launches, guaranteeing the security and impact your brand demands.",
-                "exp-2-h3": "Architecture & Scenography",
-                "exp-2-p": "We don’t just build booths; we create immersive ecosystems. Millimetric ephemeral design tailored to engage your guests.",
-                "exp-3-h3": "Integrated Marketing",
-                "exp-3-p": "360º campaigns (on/offline) orchestrated to amplify messages and leverage real business results.",
+                "exp-1-h3": "Corporate Events & Meetings",
+                "exp-1-p": "Specialists in sales conventions, leadership rituals, corporate graduations and high-impact leadership meetings.",
+                "exp-2-h3": "Brand Events & Sampling",
+                "exp-2-p": "Immersive launches, PR activations, brand spaces and sampling operations that generate real buzz.",
+                "exp-3-h3": "Booths & Flex Scenography",
+                "exp-3-p": "Intelligent ephemeral architecture designed to maximize flow, lead capture and ROI at trade shows.",
                 "exp-4-h3": "AI as an Accelerator",
-                "exp-4-p": "Technology never overrides relationships. Our AI Engine is our secret tool to enable agile and hyper-personalized deliveries.",
+                "exp-4-p": "Our AI Engine cross-references the assembly schedule, venue rules and scope — what would take 2 days of spreadsheets, we resolve fast.",
                 "fairs-h2": "Booth Specialists in the main São Paulo trade shows:",
                 "method-intro": "We are a <span class=\"accent\">boutique agency</span> by choice. We don’t want to be the biggest event factory; we aim to be the best strategic partner for your business.",
                 "method-1-h3": "01. Real Strategic Partner",

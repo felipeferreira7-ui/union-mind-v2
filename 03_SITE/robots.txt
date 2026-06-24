@@ -1,6 +1,6 @@
 # =============================================
 # Union Mind - robots.txt (GEO Optimized)
-# Atualizado: 2026-05-18
+# Atualizado: 2026-06-23
 # =============================================
 
 # --- Bots de IA para Busca/Citação (LIBERADOS) ---
@@ -20,6 +20,12 @@ User-agent: Claude-User
 Allow: /
 
 User-agent: PerplexityBot
+Allow: /
+
+User-agent: Gemini-Bot
+Allow: /
+
+User-agent: Google-Gemini
 Allow: /
 
 # --- Bots de IA para Treinamento (BLOQUEADOS) ---
