@@ -1,61 +1,121 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, nofollow">
     <title>Página não encontrada | Union Mind</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="assets/logos/favicon.png">
+    <meta name="robots" content="noindex">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap">
+    <link rel="stylesheet" href="style-v2.css">
     <style>
-        body {
-            background: #000;
-            color: #fff;
+        .error-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .error-main {
+            flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            background: var(--charcoal);
+            color: #fff;
+            padding: 4rem 2rem;
             text-align: center;
-            font-family: 'League Spartan', sans-serif;
         }
-
-        .container-404 {
-            padding: 2rem;
+        .error-number {
+            font-size: clamp(6rem, 18vw, 14rem);
+            font-weight: 800;
+            line-height: 1;
+            color: rgba(255,255,255,0.06);
+            letter-spacing: -0.05em;
+            margin-bottom: -2rem;
+            position: relative;
         }
-
-        h1 {
-            font-size: 8rem;
-            margin: 0;
-            color: var(--accent-color);
+        .error-code-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--blue-bright);
+            margin-bottom: 1.5rem;
         }
-
-        p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            color: #888;
+        .error-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
         }
-
-        .btn-cta {
-            display: inline-block;
-            text-decoration: none;
+        .error-title em {
+            font-style: normal;
+            color: #60A5FA;
+        }
+        .error-sub {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.5);
+            max-width: 500px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+        .error-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
     </style>
-    <script>
-        // Redirect to home after 5 seconds
-        setTimeout(() => {
-            window.location.href = 'index.html';
-        }, 5000);
-    </script>
-    <link rel="icon" type="image/png" href="assets/logos/favicon.png">
 </head>
+<body class="error-page">
 
-<body>
-    <div class="container-404">
-        <h1>404</h1>
-        <p>A página que você procura foi movida ou não existe mais.</p>
-        <p>Você será redirecionado para a nossa nova home em instantes...</p>
-        <a href="index.html" class="btn-cta"><span>Voltar para Home agora</span></a>
-    </div>
+    <header>
+        <div class="container header-inner">
+            <a href="index.html" class="logo-area">
+                <img src="assets/logos/logo-principal.png" alt="Union Mind" width="28" height="28">
+                <span class="logo-wordmark">UNION MIND</span>
+            </a>
+            <nav>
+                <a href="index.html#expertise">Expertise</a>
+                <a href="index.html#cases">Cases</a>
+                <a href="labs.html" class="labs-link">Union Labs</a>
+                <a href="index.html#configurador" class="btn-cta">Fale com um Especialista →</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="error-main">
+        <div>
+            <div class="error-number">404</div>
+            <div class="error-code-label">— Página não encontrada</div>
+            <h1 class="error-title">
+                O palco está vazio.<br>
+                Mas a <em>equipe</em> está aqui.
+            </h1>
+            <p class="error-sub">
+                A página que você procura não existe ou foi movida. Mas nosso time continua pronto para o briefing.
+            </p>
+            <div class="error-actions">
+                <a href="index.html" class="btn-primary" style="background:var(--blue); border-color:var(--blue);">
+                    Voltar para o início →
+                </a>
+                <a href="index.html#configurador" class="btn-ghost" style="color:#fff; border-color:rgba(255,255,255,0.3);">
+                    Falar com a equipe
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom" style="padding:2rem 0;">
+                <span>© 2026 Union Mind Eventos e Comunicação</span>
+                <span>felipe@unionmind.solutions</span>
+            </div>
+        </div>
+    </footer>
+
 </body>
-
 </html>
