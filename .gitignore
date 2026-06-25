@@ -6,10 +6,12 @@
 # Ignorar TUDO por padrão
 /*
 
-# Excluir (permitir) apenas a pasta do site
+# Excluir (permitir) apenas a pasta do site e CI/CD
 !03_SITE/
 !.gitignore
+!.github/
 
 # Dentro do site, ignorar arquivos temporários
 03_SITE/*.log
 03_SITE/node_modules/
+
