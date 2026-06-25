@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Assets binários grandes (não versionados)
+assets/logos/*.ai
+*.sketch
+
+# Rascunhos e previews
+index-v2-preview.html
+
+# Pastas internas (protegidas no robots.txt também)
+INTERNO/
+site-backup/
+
+# Node (caso apareça no futuro)
+node_modules/
+.env
+.env.local
+
+# Python cache
+__pycache__/
+*.pyc
+.pytest_cache/
