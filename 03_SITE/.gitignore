@@ -23,3 +23,8 @@ node_modules/
 __pycache__/
 *.pyc
 .pytest_cache/
+
+# Apresentações e Apoio
+*.pptx
+apresentacao.html
+apresentacao_prints/
