@@ -112,18 +112,10 @@ def push_sitemap(vid):
 # Generate Category A
 for v in venuesA:
     content = catA_HTML
-    content = content.replace('Bourbon Atibaia Resort', v['name'])
-    content = content.replace('Bourbon Atibaia', v['short'])
-    content = content.replace(urllib.parse.quote('Bourbon Atibaia Resort'), urllib.parse.quote(v['name']))
+    content = content.replace('[VENUE_NAME]', v['name'])
     content = content.replace('[URL_SLUG]', v['id'])
-    
-    # Adjust specific sentence
-    content = content.replace('Transformamos o principal resort de São Paulo', f"Transformamos o {v['short']}")
-
-    # Point CTAs to the smart form on Home with context and pre-fill
-    venue_name_enc = urllib.parse.quote(v['name'])
-    content = content.replace('href="../index.html?type=resort#configurador"', f'href="../index.html?type=resort&venue={venue_name_enc}#configurador"')
-    content = content.replace('href="../index.html"', 'href="../index.html"')
+    venue_wa = urllib.parse.quote(v['name'])
+    content = content.replace('[VENUE_WA]', venue_wa)
 
     with open(os.path.join(outDir, f"{v['id']}.html"), 'w', encoding='utf-8') as f:
         f.write(content)
@@ -132,14 +124,10 @@ for v in venuesA:
 # Generate Category B
 for v in venuesB:
     content = catB_HTML
-    content = content.replace('Expo Center Norte', v['name'])
-    content = content.replace(urllib.parse.quote('Expo Center Norte'), urllib.parse.quote(v['name']))
+    content = content.replace('[VENUE_NAME]', v['name'])
     content = content.replace('[URL_SLUG]', v['id'])
-    
-    # Point CTAs to the smart form on Home with Expo context and pre-fill
-    venue_name_enc = urllib.parse.quote(v['name'])
-    content = content.replace('href=\"/#configurador\"', f'href=\"../index.html?type=expo&venue={venue_name_enc}#configurador\"')
-    content = content.replace('href=\"/\"', 'href=\"../index.html\"')
+    venue_wa = urllib.parse.quote(v['name'])
+    content = content.replace('[VENUE_WA]', venue_wa)
     
     with open(os.path.join(outDir, f"{v['id']}.html"), 'w', encoding='utf-8') as f:
         f.write(content)

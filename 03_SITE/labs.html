@@ -392,11 +392,11 @@
                 <span></span><span></span><span></span>
             </button>
             <nav>
-                <a href="index.html#expertise" onclick="document.querySelector('nav').classList.remove('active')">Expertise</a>
-                <a href="index.html#cases" onclick="document.querySelector('nav').classList.remove('active')">Cases</a>
-                <a href="index.html#metodologia" onclick="document.querySelector('nav').classList.remove('active')">Metodologia</a>
-                <a href="labs.html" class="labs-link" onclick="document.querySelector('nav').classList.remove('active')">Union Labs</a>
-                <a href="#contact" class="btn-cta" onclick="document.querySelector('nav').classList.remove('active')">Fale com um Especialista →</a>
+                <a href="index.html#expertise" onclick="document.querySelector('nav').classList.remove('active')" data-i18n="nav-expertise">Expertise</a>
+                <a href="index.html#cases" onclick="document.querySelector('nav').classList.remove('active')" data-i18n="nav-cases">Cases</a>
+                <a href="index.html#metodologia" onclick="document.querySelector('nav').classList.remove('active')" data-i18n="nav-methodology">Metodologia</a>
+                <a href="labs.html" class="labs-link" onclick="document.querySelector('nav').classList.remove('active')" data-i18n="nav-labs">Union Labs</a>
+                <a href="#contact" class="btn-cta" onclick="document.querySelector('nav').classList.remove('active')" data-i18n="nav-cta">Fale com um Especialista →</a>
             </nav>
         </div>
     </header>
@@ -645,10 +645,10 @@
                     <strong>Navegação</strong>
                     <div class="footer-venues">
                         <a href="index.html">A Agência</a>
-                        <a href="index.html#expertise">Expertise</a>
-                        <a href="index.html#cases">Cases</a>
-                        <a href="index.html#metodologia">Metodologia</a>
-                        <a href="labs.html">Union Labs</a>
+                        <a href="index.html#expertise" data-i18n="nav-expertise">Expertise</a>
+                        <a href="index.html#cases" data-i18n="nav-cases">Cases</a>
+                        <a href="index.html#metodologia" data-i18n="nav-methodology">Metodologia</a>
+                        <a href="labs.html" data-i18n="nav-labs">Union Labs</a>
                         <a href="insights/index.html">Insights</a>
                     </div>
                 </div>
@@ -695,5 +695,75 @@
             });
         });
     </script>
+
+<script>
+const translations = {
+    pt: {
+        "nav-expertise": "Expertise", "nav-cases": "Cases", "nav-methodology": "Metodologia",
+        "nav-labs": "Union Labs", "nav-cta": "Fale com um Especialista →",
+        "labs-hero-tag": "UNION LABS · EVENTTECH",
+        "labs-hero-h1": "Tecnologia para <em>Eventos Corporativos</em>",
+        "labs-hero-sub": "Desenvolvemos MVPs, automações e ferramentas proprietárias que eliminam planilhas e trazem inteligência de dados para sua convenção.",
+        "labs-stat-1": "Mais de 10 mil check-ins processados",
+        "labs-stat-2": "Redução média em tempo de credenciamento",
+        "labs-sol-tag": "NOSSAS SOLUÇÕES",
+        "labs-sol-h2": "O que construímos",
+        "labs-sol-1-h3": "App de RSVP Dinâmico",
+        "labs-sol-1-p": "Abandone o Google Forms. Criamos fluxos de RSVP com disparo de WhatsApp, confirmação em 2 cliques e painel de controle em tempo real para a diretoria.",
+        "labs-sol-2-h3": "Credenciamento Express",
+        "labs-sol-2-p": "Sistemas de QR Code com impressão instantânea de crachás no venue. Fila zero e integração direta com a base de RH ou convidados.",
+        "labs-sol-3-h3": "Gamificação & Engajamento",
+        "labs-sol-3-p": "Quizzes interativos, rankings em painéis de LED e caça ao tesouro digital para convenções que precisam prender a atenção do público.",
+        "labs-sol-4-h3": "Event AI & Analytics",
+        "labs-sol-4-p": "Cruzamento de dados de participação, heatmaps de estandes e relatórios de ROI gerados por inteligência artificial pós-evento.",
+        "labs-cta-tag": "CONSTRUA COM A GENTE",
+        "labs-cta-h2": "Precisa de uma solução customizada para o seu próximo evento?",
+        "labs-cta-p": "Nosso Lab tem desenvolvedores dedicados para criar a solução técnica do seu projeto.",
+        "labs-cta-btn": "Agendar Call Técnica",
+        "sticky-cta": "Pedir Orçamento (48h)",
+        "footer-copy": "© 2026 Union Mind Events. Todos os direitos reservados."
+    },
+    en: {
+        "nav-expertise": "Expertise", "nav-cases": "Cases", "nav-methodology": "Methodology",
+        "nav-labs": "Union Labs", "nav-cta": "Talk to an Expert →",
+        "labs-hero-tag": "UNION LABS · EVENTTECH",
+        "labs-hero-h1": "Technology for <em>Corporate Events</em>",
+        "labs-hero-sub": "We develop MVPs, automations and proprietary tools that eliminate spreadsheets and bring data intelligence to your convention.",
+        "labs-stat-1": "Over 10,000 check-ins processed",
+        "labs-stat-2": "Average reduction in accreditation time",
+        "labs-sol-tag": "OUR SOLUTIONS",
+        "labs-sol-h2": "What we build",
+        "labs-sol-1-h3": "Dynamic RSVP App",
+        "labs-sol-1-p": "Ditch Google Forms. We create RSVP flows with WhatsApp integration, 2-click confirmation, and real-time dashboards for directors.",
+        "labs-sol-2-h3": "Express Accreditation",
+        "labs-sol-2-p": "QR Code systems with instant badge printing at the venue. Zero lines and direct integration with HR or guest databases.",
+        "labs-sol-3-h3": "Gamification & Engagement",
+        "labs-sol-3-p": "Interactive quizzes, LED wall rankings, and digital scavenger hunts for conventions that need to hold audience attention.",
+        "labs-sol-4-h3": "Event AI & Analytics",
+        "labs-sol-4-p": "Attendance data cross-referencing, booth heatmaps, and ROI reports generated by AI post-event.",
+        "labs-cta-tag": "BUILD WITH US",
+        "labs-cta-h2": "Need a customized solution for your next event?",
+        "labs-cta-p": "Our Lab has dedicated developers to create the technical solution for your project.",
+        "labs-cta-btn": "Schedule Technical Call",
+        "sticky-cta": "Request Quote (48h)",
+        "footer-copy": "© 2026 Union Mind Events. All rights reserved."
+    }
+};
+
+function switchLanguage(lang) {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+            el.innerHTML = translations[lang][key];
+        }
+    });
+    document.getElementById('btn-pt').classList.toggle('active', lang === 'pt');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+}
+
+document.addEventListener('DOMContentLoaded', () => switchLanguage('pt'));
+</script>
+
 </body>
 </html>
