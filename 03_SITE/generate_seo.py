@@ -17,6 +17,10 @@ catC_path = os.path.join(base_dir, 'templates/template_urbano.html')
 with open(catC_path, 'r', encoding='utf-8') as f:
     catC_HTML = f.read()
 
+catD_path = os.path.join(base_dir, 'templates/template_bairro.html')
+with open(catD_path, 'r', encoding='utf-8') as f:
+    catD_HTML = f.read()
+
 venuesA = [
     { 'id': 'almenat-tapestry', 'name': 'Almenat Tapestry Collection', 'short': 'Almenat' },
     { 'id': 'hotel-vila-rossa', 'name': 'Hotel Vila Rossa', 'short': 'Vila Rossa' },
@@ -65,6 +69,16 @@ venuesC = [
     { 'id': 'blue-tree-faria-lima', 'name': 'Blue Tree Premium Faria Lima', 'bairro': 'Pinheiros' },
     { 'id': 'infinito-na-vela-leopoldina', 'name': 'Infinito na Vela Leopoldina', 'bairro': 'Leopoldina' },
     { 'id': 'renaissance-sao-paulo', 'name': 'Renaissance São Paulo Hotel', 'bairro': 'Bela Vista' }
+]
+
+# Categoria D: Polos Corporativos (Bairros)
+venuesD = [
+    { 'id': 'faria-lima', 'name': 'Faria Lima' },
+    { 'id': 'berrini', 'name': 'Berrini' },
+    { 'id': 'alphaville', 'name': 'Alphaville' },
+    { 'id': 'paulista', 'name': 'Avenida Paulista' },
+    { 'id': 'vila-olimpia', 'name': 'Vila Olímpia' },
+    { 'id': 'chacara-santo-antonio', 'name': 'Chácara Santo Antônio' }
 ]
 
 outDir = os.path.join(base_dir, 'espacos')
@@ -146,9 +160,23 @@ for v in venuesC:
         f.write(content)
     push_sitemap(v['id'])
 
+# Generate Category D (Corporate Hubs)
+for v in venuesD:
+    content = catD_HTML
+    content = content.replace('[BAIRRO_NOME]', v['name'])
+    content = content.replace('[URL_SLUG]', v['id'])
+    venue_wa = urllib.parse.quote(v['name'])
+    venue_enc = urllib.parse.quote(v['name'])
+    content = content.replace('[VENUE_WA]', venue_wa)
+    content = content.replace('[VENUE_ENC]', venue_enc)
+
+    with open(os.path.join(outDir, f"{v['id']}.html"), 'w', encoding='utf-8') as f:
+        f.write(content)
+    push_sitemap(v['id'])
+
 sitemapUrls += "</urlset>"
 
 with open(sitemapPath, 'w', encoding='utf-8') as f:
     f.write(sitemapUrls)
 
-print(f"[Union Labs] Python script executado. Geradas {len(venuesA) + len(venuesB) + len(venuesC)} landing pages automaticamente! Sitemap atualizado.")
+print(f"[Union Labs] Python script executado. Geradas {len(venuesA) + len(venuesB) + len(venuesC) + len(venuesD)} landing pages automaticamente! Sitemap atualizado.")

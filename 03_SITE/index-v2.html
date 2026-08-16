@@ -1677,44 +1677,16 @@ footer {
 
             <form id="config-form" class="config-form" action="https://formspree.io/f/xzdawggb" method="POST">
                 <div class="form-step">
-                    <label data-i18n="config-label-0">00. Nome da Feira / Local do Evento</label>
-                    <input type="text" id="event_name" name="nome_evento" placeholder="Ex: APAS Show, Bourbon Atibaia..." required>
+                    <label data-i18n="config-label-1">01. Nome da Feira / Local do Evento</label>
+                    <input type="text" id="event_name" name="nome_evento" placeholder="Ex: Faria Lima, SP Expo, Atibaia..." required>
                 </div>
                 <div class="form-step">
-                    <label data-i18n="config-label-1">01. Foco Estratégico</label>
-                    <select id="focus" name="foco_estrategico">
-                        <option value="sales" data-i18n="config-opt-1-1">Impulsionar Vendas e Performance</option>
-                        <option value="brand" data-i18n="config-opt-1-2">Branding e Posicionamento</option>
-                        <option value="culture" data-i18n="config-opt-1-3">Engajamento e Cultura Interna</option>
-                        <option value="innovation" data-i18n="config-opt-1-4">Inovação e Lançamento</option>
-                    </select>
-                </div>
-                <div class="form-step" id="group-convention">
-                    <label data-i18n="config-label-2">02. Perfil do Público</label>
-                    <select id="audience" name="perfil_evento">
-                        <option value="exec" data-i18n="config-opt-2-1">Alta Liderança (C-Level / VIP)</option>
-                        <option value="mass" data-i18n="config-opt-2-2">Convenção de Grande Porte (+1000 pax)</option>
-                        <option value="street" data-i18n="config-opt-2-3">Ativação de Marca / Público Final</option>
-                        <option value="digital" data-i18n="config-opt-2-4">Evento Híbrido / Digital Experience</option>
-                    </select>
-                </div>
-                <div class="form-step" id="group-expo" style="display:none;">
-                    <label data-i18n="config-label-expo">02. Tamanho do Estande</label>
-                    <select id="expo_size" name="tamanho_expo">
-                        <option value="booth-50">Estande até 50m²</option>
-                        <option value="booth-300">Estande até 300m²</option>
-                        <option value="booth-1000">Estande até 1.000m²</option>
-                        <option value="fair-15">Feira de Negócios (até 15 estandes)</option>
-                        <option value="fair-50">Feira de Negócios (até 50 estandes)</option>
-                    </select>
+                    <label data-i18n="config-label-2">02. Empresa</label>
+                    <input type="text" id="empresa" name="empresa" placeholder="Sua Empresa" required>
                 </div>
                 <div class="form-step">
-                    <label data-i18n="config-label-3">03. Complexidade de Execução</label>
-                    <select id="complexity" name="complexidade">
-                        <option value="critical" data-i18n="config-opt-3-1">Fast Track (menos de 30 dias)</option>
-                        <option value="standard" data-i18n="config-opt-3-2">Standard (30 a 90 dias)</option>
-                        <option value="white-glove" data-i18n="config-opt-3-3">White Glove (Produção Premium)</option>
-                    </select>
+                    <label data-i18n="config-label-3">03. O que você precisa? (Sua Dor)</label>
+                    <textarea id="mensagem" name="mensagem" placeholder="Ex: Precisamos de um estande de 100m² para o evento no final do mês." required></textarea>
                 </div>
                 <div class="form-step">
                     <label data-i18n="config-label-4">04. Seu E-mail Corporativo</label>
@@ -1819,6 +1791,12 @@ footer {
                     <a href="espacos/tivoli-ecoresort.html">Tivoli Ecoresort</a>
                     <a href="espacos/clara-resorts.html">Clara Resorts</a>
                     <a href="espacos/pro-magno.html">Pro Magno</a>
+                    <a href="espacos/faria-lima.html">Faria Lima</a>
+                    <a href="espacos/berrini.html">Berrini</a>
+                    <a href="espacos/alphaville.html">Alphaville</a>
+                    <a href="espacos/paulista.html">Avenida Paulista</a>
+                    <a href="espacos/vila-olimpia.html">Vila Olímpia</a>
+                    <a href="espacos/chacara-santo-antonio.html">Chácara Sto Antônio</a>
                 </div>
             </div>
         </div>
@@ -1857,11 +1835,9 @@ const translations = {
         "case-3-tag": "Convenção da Marca", "case-4-tag": "Convenção Internacional",
         "config-h2": "Consultoria de Escopo",
         "config-p": "Nossa engine analisa complexidade, público e deadlines para desenhar o modelo operacional ideal — e entregamos uma proposta personalizada em até 48h.",
-        "config-label-0": "00. Nome da Feira / Local do Evento",
-        "config-label-1": "01. Foco Estratégico",
-        "config-label-2": "02. Perfil do Público",
-        "config-label-expo": "02. Tamanho do Estande",
-        "config-label-3": "03. Complexidade de Execução",
+        "config-label-1": "01. Nome da Feira / Local do Evento",
+        "config-label-2": "02. Empresa",
+        "config-label-3": "03. O que você precisa? (Sua Dor)",
         "config-label-4": "04. Seu E-mail Corporativo",
         "config-opt-1-1": "Impulsionar Vendas e Performance",
         "config-opt-1-2": "Branding e Posicionamento",
@@ -1942,9 +1918,10 @@ const translations = {
         "method-3-h3": "Detail is not optional", "method-3-p": "In corporate events, the failing detail is the one the event owner remembers. Every element is verified by the person who signed the brief.",
         "config-tag": "— FREE CONSULTANCY",
         "config-h2": "Scoping Consultancy", "config-p": "Our engine analyzes complexity, audience and deadlines to design the ideal operational model — delivering a personalized proposal within 48h.",
-        "config-label-0": "00. Exhibition Name / Event Venue", "config-label-1": "01. Strategic Focus",
-        "config-label-2": "02. Audience Profile", "config-label-expo": "02. Booth Size",
-        "config-label-3": "03. Execution Complexity", "config-label-4": "04. Corporate Email",
+        "config-label-1": "01. Exhibition Name / Event Venue", 
+        "config-label-2": "02. Company",
+        "config-label-3": "03. What do you need? (Your Pain)", 
+        "config-label-4": "04. Corporate Email",
         "config-opt-1-1": "Boost Sales and Performance", "config-opt-1-2": "Branding and Market Positioning",
         "config-opt-1-3": "Engagement and Internal Culture", "config-opt-1-4": "Innovation and Launch",
         "config-opt-2-1": "Senior Leadership (C-Level / VIP)", "config-opt-2-2": "High-Scale Convention (+1000 pax)",
@@ -2034,5 +2011,13 @@ document.getElementById('config-form').addEventListener('submit', function(e) {
     });
 });
 </script>
+
+<a href="https://wa.me/5511947684604?text=Ol%C3%A1%2C%20quero%20falar%20sobre%20um%20evento!" target="_blank" class="whatsapp-float">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- Sticky Mobile CTA -->
+<a href="#configurador" class="sticky-mobile-cta">Pedir Orçamento (48h)</a>
+
 </body>
 </html>
