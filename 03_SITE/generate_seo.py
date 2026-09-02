@@ -73,12 +73,12 @@ venuesC = [
 
 # Categoria D: Polos Corporativos (Bairros)
 venuesD = [
-    { 'id': 'faria-lima', 'name': 'Faria Lima' },
-    { 'id': 'berrini', 'name': 'Berrini' },
-    { 'id': 'alphaville', 'name': 'Alphaville' },
-    { 'id': 'paulista', 'name': 'Avenida Paulista' },
-    { 'id': 'vila-olimpia', 'name': 'Vila Olímpia' },
-    { 'id': 'chacara-santo-antonio', 'name': 'Chácara Santo Antônio' }
+    { 'id': 'faria-lima', 'name': 'Faria Lima', 'lat': '-23.5855', 'lng': '-46.6852' },
+    { 'id': 'berrini', 'name': 'Berrini', 'lat': '-23.6068', 'lng': '-46.6946' },
+    { 'id': 'alphaville', 'name': 'Alphaville', 'lat': '-23.4938', 'lng': '-46.8488' },
+    { 'id': 'paulista', 'name': 'Avenida Paulista', 'lat': '-23.5615', 'lng': '-46.6560' },
+    { 'id': 'vila-olimpia', 'name': 'Vila Olímpia', 'lat': '-23.5976', 'lng': '-46.6853' },
+    { 'id': 'chacara-santo-antonio', 'name': 'Chácara Santo Antônio', 'lat': '-23.6318', 'lng': '-46.7088' }
 ]
 
 outDir = os.path.join(base_dir, 'espacos')
@@ -100,13 +100,13 @@ sitemapUrls = f"""<?xml version="1.0" encoding="UTF-8"?>
   </url>
 """
 
-def push_sitemap(vid):
+def push_sitemap(vid, priority="0.7"):
     global sitemapUrls
     sitemapUrls += f"""  <url>
     <loc>https://unionmind.solutions/espacos/{vid}.html</loc>
     <lastmod>{current_date}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>{priority}</priority>
   </url>\n"""
 
 # Generate Category A
@@ -153,6 +153,8 @@ for v in venuesD:
     content = catD_HTML
     content = content.replace('[BAIRRO_NOME]', v['name'])
     content = content.replace('[URL_SLUG]', v['id'])
+    content = content.replace('[GEO_LAT]', v['lat'])
+    content = content.replace('[GEO_LNG]', v['lng'])
     venue_wa = urllib.parse.quote(v['name'])
     venue_enc = urllib.parse.quote(v['name'])
     content = content.replace('[VENUE_WA]', venue_wa)
@@ -160,7 +162,9 @@ for v in venuesD:
 
     with open(os.path.join(outDir, f"{v['id']}.html"), 'w', encoding='utf-8') as f:
         f.write(content)
-    push_sitemap(v['id'])
+        
+    priority = "0.9" if v['id'] in ['faria-lima', 'berrini', 'paulista'] else "0.7"
+    push_sitemap(v['id'], priority)
 
 sitemapUrls += "</urlset>"
 
