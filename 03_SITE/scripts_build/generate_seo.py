@@ -2,7 +2,7 @@ import os
 import urllib.parse
 from datetime import datetime
 
-base_dir = os.path.dirname(os.path.abspath(__file__))
+base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 current_date = datetime.now().strftime('%Y-%m-%d')
 catA_path = os.path.join(base_dir, 'templates/template_resort.html')
 catB_path = os.path.join(base_dir, 'templates/template_expo.html')
