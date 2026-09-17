@@ -1,3 +1,7 @@
+# Historical bootstrap retained for reference. Maintained templates are edited directly.
+if __name__ == '__main__':
+    raise SystemExit('Bootstrap histórico desativado. Edite templates/ e execute scripts_build/generate_seo.py.')
+
 import os
 import re
 
