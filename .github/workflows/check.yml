@@ -1,0 +1,29 @@
+name: Validar revisão do site Union
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: ['codex/**']
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Gerar e verificar sem enviar formulários
+        run: |
+          python3 03_SITE/scripts_build/generate_seo.py
+          python3 03_SITE/scripts_build/build_languages.py
+          python3 03_SITE/scripts_build/check_site.py
+          node 03_SITE/scripts_build/check_forms.js
+          node 03_SITE/scripts_build/check_analytics.js
+          git diff --exit-code -- 03_SITE
+      - name: Verificar montagem do pacote público
+        run: python3 03_SITE/scripts_build/prepare_public.py

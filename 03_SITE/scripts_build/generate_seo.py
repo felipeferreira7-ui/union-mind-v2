@@ -1,4 +1,7 @@
 import os
+import re
+import html
+from pathlib import Path
 import urllib.parse
 from datetime import datetime
 
@@ -62,13 +65,13 @@ venuesC = [
     { 'id': 'um-rooftop', 'name': 'UM Rooftop', 'bairro': 'Vila Olímpia' },
     { 'id': 'wtc-events-center', 'name': 'WTC Events Center', 'bairro': 'Berrini' },
     { 'id': 'grupo-bisutti', 'name': 'Grupo Bisutti', 'bairro': 'Vila Olímpia' },
-    { 'id': 'jk-iguatemi-eventos', 'name': 'JK Iguatemi Espaços', 'bairro': 'Jardins' },
+    { 'id': 'jk-iguatemi-eventos', 'name': 'JK Iguatemi Espaços', 'bairro': 'Vila Olímpia' },
     { 'id': 'palacio-tangara', 'name': 'Palácio Tangará', 'bairro': 'Morumbi' },
     { 'id': 'arca-eventos-pinheiros', 'name': 'Arca Eventos Pinheiros', 'bairro': 'Pinheiros' },
-    { 'id': 'grand-hyatt-sao-paulo', 'name': 'Grand Hyatt São Paulo', 'bairro': 'Vila Olímpia' },
+    { 'id': 'grand-hyatt-sao-paulo', 'name': 'Grand Hyatt São Paulo', 'bairro': 'Brooklin' },
     { 'id': 'blue-tree-faria-lima', 'name': 'Blue Tree Premium Faria Lima', 'bairro': 'Pinheiros' },
-    { 'id': 'infinito-na-vela-leopoldina', 'name': 'Infinito na Vela Leopoldina', 'bairro': 'Leopoldina' },
-    { 'id': 'renaissance-sao-paulo', 'name': 'Renaissance São Paulo Hotel', 'bairro': 'Bela Vista' }
+    { 'id': 'infinito-na-vela-leopoldina', 'name': 'Espaço Infinitto — Vila Leopoldina', 'bairro': 'Leopoldina' },
+    { 'id': 'renaissance-sao-paulo', 'name': 'Renaissance São Paulo Hotel', 'bairro': 'Jardins' }
 ]
 
 # Categoria D: Polos Corporativos (Bairros)
@@ -81,94 +84,38 @@ venuesD = [
     { 'id': 'chacara-santo-antonio', 'name': 'Chácara Santo Antônio', 'lat': '-23.6318', 'lng': '-46.7088' }
 ]
 
-outDir = os.path.join(base_dir, 'espacos')
-sitemapPath = os.path.join(base_dir, 'sitemap.xml')
+# Templates are the source of truth. Legacy generators must not overwrite them.
+base = Path(base_dir)
+out_dir = base / 'espacos'
+all_venues = venuesA + venuesB + venuesC + venuesD
+for template, venues in [(catA_HTML, venuesA), (catB_HTML, venuesB), (catC_HTML, venuesC), (catD_HTML, venuesD)]:
+    for venue in venues:
+        content = template
+        values = {
+            '[VENUE_NAME]': venue['name'], '[BAIRRO_NOME]': venue['name'],
+            '[URL_SLUG]': venue['id'], '[VENUE_BAIRRO]': venue.get('bairro', ''),
+            '[VENUE_WA]': urllib.parse.quote(venue['name']), '[VENUE_ENC]': urllib.parse.quote(venue['name']),
+            '[GEO_LAT]': venue.get('lat', ''), '[GEO_LNG]': venue.get('lng', '')
+        }
+        for key, value in values.items(): content = content.replace(key, value)
+        content = content.replace('<meta name="robots" content="noindex, follow">', '<meta name="robots" content="index, follow">')
+        if re.search(r'\[(?:VENUE|BAIRRO|URL_SLUG|GEO_)[A-Z_]*\]', content):
+            raise ValueError('Unresolved template token: ' + venue['id'])
+        (out_dir / (venue['id'] + '.html')).write_text(content, encoding='utf-8')
 
-sitemapUrls = f"""<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://unionmind.solutions/</loc>
-    <lastmod>{current_date}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://unionmind.solutions/labs.html</loc>
-    <lastmod>{current_date}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-"""
-
-def push_sitemap(vid, priority="0.7"):
-    global sitemapUrls
-    sitemapUrls += f"""  <url>
-    <loc>https://unionmind.solutions/espacos/{vid}.html</loc>
-    <lastmod>{current_date}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>{priority}</priority>
-  </url>\n"""
-
-# Generate Category A
-for v in venuesA:
-    content = catA_HTML
-    content = content.replace('[VENUE_NAME]', v['name'])
-    content = content.replace('[URL_SLUG]', v['id'])
-    venue_wa = urllib.parse.quote(v['name'])
-    content = content.replace('[VENUE_WA]', venue_wa)
-
-    with open(os.path.join(outDir, f"{v['id']}.html"), 'w', encoding='utf-8') as f:
-        f.write(content)
-    push_sitemap(v['id'])
-
-# Generate Category B
-for v in venuesB:
-    content = catB_HTML
-    content = content.replace('[VENUE_NAME]', v['name'])
-    content = content.replace('[URL_SLUG]', v['id'])
-    venue_wa = urllib.parse.quote(v['name'])
-    content = content.replace('[VENUE_WA]', venue_wa)
-    
-    with open(os.path.join(outDir, f"{v['id']}.html"), 'w', encoding='utf-8') as f:
-        f.write(content)
-    push_sitemap(v['id'])
-
-# Generate Category C (Urban Spaces SP)
-for v in venuesC:
-    content = catC_HTML
-    content = content.replace('[VENUE_NAME]', v['name'])
-    content = content.replace('[VENUE_BAIRRO]', v['bairro'])
-    content = content.replace('[URL_SLUG]', v['id'])
-    venue_wa = urllib.parse.quote(v['name'])
-    venue_enc = urllib.parse.quote(v['name'])
-    content = content.replace('[VENUE_WA]', venue_wa)
-    content = content.replace('[VENUE_ENC]', venue_enc)
-
-    with open(os.path.join(outDir, f"{v['id']}.html"), 'w', encoding='utf-8') as f:
-        f.write(content)
-    push_sitemap(v['id'])
-
-# Generate Category D (Corporate Hubs)
-for v in venuesD:
-    content = catD_HTML
-    content = content.replace('[BAIRRO_NOME]', v['name'])
-    content = content.replace('[URL_SLUG]', v['id'])
-    content = content.replace('[GEO_LAT]', v['lat'])
-    content = content.replace('[GEO_LNG]', v['lng'])
-    venue_wa = urllib.parse.quote(v['name'])
-    venue_enc = urllib.parse.quote(v['name'])
-    content = content.replace('[VENUE_WA]', venue_wa)
-    content = content.replace('[VENUE_ENC]', venue_enc)
-
-    with open(os.path.join(outDir, f"{v['id']}.html"), 'w', encoding='utf-8') as f:
-        f.write(content)
-        
-    priority = "0.9" if v['id'] in ['faria-lima', 'berrini', 'paulista'] else "0.7"
-    push_sitemap(v['id'], priority)
-
-sitemapUrls += "</urlset>"
-
-with open(sitemapPath, 'w', encoding='utf-8') as f:
-    f.write(sitemapUrls)
-
-print(f"[Union Labs] Python script executado. Geradas {len(venuesA) + len(venuesB) + len(venuesC) + len(venuesD)} landing pages automaticamente! Sitemap atualizado.")
+# A navigable directory gives every space an internal link, not just a sitemap entry.
+sections = []
+for i, (title, venues) in enumerate([('Hotéis e resorts', venuesA), ('Pavilhões e centros de convenções', venuesB), ('Espaços urbanos', venuesC), ('Regiões corporativas', venuesD)]):
+    links = ''.join('<li><a href="' + v['id'] + '.html">' + html.escape(v['name']) + '</a></li>' for v in venues)
+    sections.append('<section><h2 data-i18n="category-' + str(i) + '">' + title + '</h2><ul>' + links + '</ul></section>')
+directory = (base / 'scripts_build/space_directory.html').read_text(encoding='utf-8').replace('[DIRECTORY_SECTIONS]', ''.join(sections))
+(out_dir / 'index.html').write_text(directory, encoding='utf-8')
+paths = ['/', '/labs.html', '/espacos/', '/insights/']
+paths += ['/espacos/' + v['id'] + '.html' for v in all_venues]
+paths += ['/insights/' + p.name for p in sorted((base / 'insights').glob('*.html')) if p.name != 'index.html']
+# No artificial modification dates: update lastmod only with verified editorial history.
+sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+sitemap += ''.join('  <url><loc>https://unionmind.solutions' + path + '</loc></url>\n' for path in paths)
+sitemap += '</urlset>\n'
+(base / 'sitemap.xml').write_text(sitemap, encoding='utf-8')
+print(f'Generated {len(all_venues)} venue pages, directory and sitemap with {len(paths)} URLs.')

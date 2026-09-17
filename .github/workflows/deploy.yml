@@ -28,10 +28,25 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload artifact (pasta 03_SITE)
+      - name: Gerar páginas e versões de idioma
+        run: |
+          python3 03_SITE/scripts_build/generate_seo.py
+          python3 03_SITE/scripts_build/build_languages.py
+
+      - name: Verificar páginas e formulários sem envio real
+        run: |
+          python3 03_SITE/scripts_build/check_site.py
+          node 03_SITE/scripts_build/check_forms.js
+          node 03_SITE/scripts_build/check_analytics.js
+
+      - name: Preparar somente arquivos públicos
+        run: |
+          python3 03_SITE/scripts_build/prepare_public.py
+
+      - name: Upload artifact (site público)
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '03_SITE'
+          path: '_site_public'
 
       - name: Deploy to GitHub Pages
         id: deployment

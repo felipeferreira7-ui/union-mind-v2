@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página não encontrada | Union Mind</title>
-    <link rel="icon" type="image/png" href="assets/logos/favicon.png">
+    <link rel="icon" type="image/png" href="/assets/logos/favicon.png">
     <meta name="robots" content="noindex">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap">
-    <link rel="stylesheet" href="style-v2.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700;800&amp;family=Space+Mono:wght@400;700&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
+    <link rel="stylesheet" href="/style-v2.css?v=20260917c">
     <style>
         .error-page {
             min-height: 100vh;
@@ -56,7 +56,7 @@
         }
         .error-sub {
             font-size: 1.05rem;
-            color: rgba(255,255,255,0.5);
+            color: #c6cbd4;
             max-width: 500px;
             margin: 0 auto 2.5rem;
             line-height: 1.7;
@@ -72,38 +72,39 @@
 <body class="error-page">
 
     <header>
-        <div class="container header-inner">
-            <a href="index.html" class="logo-area">
-                <img src="assets/logos/logo-principal.png" alt="Union Mind" width="28" height="28">
-                <span class="logo-wordmark">UNION MIND</span>
-            </a>
-            <nav>
-                <a href="index.html#expertise">Expertise</a>
-                <a href="index.html#cases">Cases</a>
-                <a href="labs.html" class="labs-link">Union Labs</a>
-                <a href="index.html#configurador" class="btn-cta">Fale com um Especialista →</a>
-            </nav>
-        </div>
-    </header>
+    <div class="container header-inner">
+        <a href="/" class="logo-area">
+            <img src="/assets/logos/logo-principal.png" alt="Union Mind">
+            <span class="logo-wordmark">UNION MIND</span>
+        </a>
 
-    <main class="error-main">
+        <button class="mobile-menu-btn" aria-label="Abrir menu" onclick="document.querySelector('nav').classList.toggle('active')">
+            <span></span><span></span><span></span>
+        </button>
+
+        <nav>
+            <a href="/#expertise" data-i18n="nav-expertise" onclick="document.querySelector('nav').classList.remove('active')">Serviços</a>
+            <a href="/#cases" data-i18n="nav-cases" onclick="document.querySelector('nav').classList.remove('active')">Projetos</a>
+            <a href="/#metodologia" data-i18n="nav-methodology" onclick="document.querySelector('nav').classList.remove('active')">Como trabalhamos</a>
+            <a href="/labs.html" class="labs-link" data-i18n="nav-labs" onclick="document.querySelector('nav').classList.remove('active')">Union Labs</a>
+            <div class="lang-switcher">
+                <button onclick="switchLanguage('pt')" id="btn-pt" class="active">PT</button>
+                <button onclick="switchLanguage('en')" id="btn-en">EN</button>
+            </div>
+            <a href="/#configurador" class="btn-primary" data-i18n="nav-cta" onclick="document.querySelector('nav').classList.remove('active')">Vamos conversar →</a>
+        </nav>
+    </div>
+</header>
+
+<main class="error-main">
         <div>
             <div class="error-number">404</div>
-            <div class="error-code-label">— Página não encontrada</div>
-            <h1 class="error-title">
-                O palco está vazio.<br>
-                Mas a <em>equipe</em> está aqui.
-            </h1>
-            <p class="error-sub">
-                A página que você procura não existe ou foi movida. Mas nosso time continua pronto para o briefing.
-            </p>
+            <div class="error-code-label" data-i18n="error-tag">— PÁGINA NÃO ENCONTRADA</div>
+            <h1 class="error-title" data-i18n="error-title">Esta página<br><em>não está disponível.</em></h1>
+            <p class="error-sub" data-i18n="error-description">O endereço pode ter mudado. Volte ao início para conhecer a Union ou fale com nossa equipe.</p>
             <div class="error-actions">
-                <a href="index.html" class="btn-primary" style="background:var(--blue); border-color:var(--blue);">
-                    Voltar para o início →
-                </a>
-                <a href="index.html#configurador" class="btn-ghost" style="color:#fff; border-color:rgba(255,255,255,0.3);">
-                    Falar com a equipe
-                </a>
+                <a href="/" class="btn-primary" style="background:var(--blue); border-color:var(--blue);" data-i18n="error-home">Voltar para o início →</a>
+                <a href="/#configurador" class="btn-ghost" style="color:#fff; border-color:rgba(255,255,255,0.3);" data-i18n="error-talk">Falar com a equipe</a>
             </div>
         </div>
     </main>
@@ -117,5 +118,44 @@
         </div>
     </footer>
 
-</body>
+<script src="/scripts/site-ui.js"></script><script>
+const translations = {
+    "pt": {
+        "nav-expertise": "Serviços",
+        "nav-cases": "Projetos",
+        "nav-methodology": "Como trabalhamos",
+        "nav-labs": "Union Labs",
+        "nav-cta": "Vamos conversar →",
+        "config-submit": "Enviar meu projeto →",
+        "alert-success": "Recebemos seu projeto. Nossa equipe entrará em contato para conversar sobre os próximos passos.",
+        "btn-processing": "ENVIANDO...",
+        "btn-received": "SOLICITAÇÃO RECEBIDA",
+        "alert-error": "Não foi possível enviar. Tente novamente ou fale conosco pelo WhatsApp.",
+        "error-tag": "— PÁGINA NÃO ENCONTRADA",
+        "error-title": "Esta página<br><em>não está disponível.</em>",
+        "error-description": "O endereço pode ter mudado. Volte ao início para conhecer a Union ou fale com nossa equipe.",
+        "error-home": "Voltar para o início →",
+        "error-talk": "Falar com a equipe"
+    },
+    "en": {
+        "nav-expertise": "Services",
+        "nav-cases": "Projects",
+        "nav-methodology": "How we work",
+        "nav-labs": "Union Labs",
+        "nav-cta": "Let’s talk →",
+        "config-submit": "Send my project →",
+        "alert-success": "We have received your project. Our team will contact you to discuss the next steps.",
+        "btn-processing": "SENDING...",
+        "btn-received": "REQUEST RECEIVED",
+        "alert-error": "We could not send your request. Please try again or contact us on WhatsApp.",
+        "error-tag": "— PAGE NOT FOUND",
+        "error-title": "This page<br><em>is unavailable.</em>",
+        "error-description": "The address may have changed. Return to our home page to explore Union or contact our team.",
+        "error-home": "Back to home →",
+        "error-talk": "Talk to our team"
+    }
+};
+function switchLanguage(lang) { UnionUI.apply(lang, translations); document.title = lang === "en" ? "Page not found | Union Mind" : "Página não encontrada | Union Mind"; }
+document.addEventListener("DOMContentLoaded", () => switchLanguage(UnionUI.language()));
+</script></body>
 </html>
