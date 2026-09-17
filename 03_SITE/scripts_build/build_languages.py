@@ -184,7 +184,7 @@ def build(source, path, paths, lang):
             if not u.netloc:
                 a[attr]=urlunsplit(('', '',target,query,resolved.fragment))
                 if target in ['/style-v2.css', '/scripts/site-ui.js']:
-                    a[attr]=target+'?v=20260917e'
+                    a[attr]=target+'?v=20260917f'
         if a.get('id') in ['btn-pt','btn-en']:
             selected = a['id']=='btn-'+lang
             n.tag='a';a.pop('onclick',None);a.pop('type',None);a.pop('aria-pressed',None)

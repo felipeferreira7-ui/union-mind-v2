@@ -187,6 +187,7 @@ nav a {
     letter-spacing: 0.02em;
 }
 nav a:hover { color: var(--charcoal); }
+nav a.btn-primary:hover, nav a.btn-primary:focus-visible { color: #fff; }
 nav a.labs-link { color: var(--wine); font-weight: 600; }
 
 .lang-switcher {
