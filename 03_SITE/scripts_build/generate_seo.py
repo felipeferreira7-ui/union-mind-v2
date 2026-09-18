@@ -110,7 +110,7 @@ for i, (title, venues) in enumerate([('Hotéis e resorts', venuesA), ('Pavilhõe
     sections.append('<section><h2 data-i18n="category-' + str(i) + '">' + title + '</h2><ul>' + links + '</ul></section>')
 directory = (base / 'scripts_build/space_directory.html').read_text(encoding='utf-8').replace('[DIRECTORY_SECTIONS]', ''.join(sections))
 (out_dir / 'index.html').write_text(directory, encoding='utf-8')
-paths = ['/', '/labs.html', '/espacos/', '/insights/']
+paths = ['/', '/labs.html', '/checklist-convencao.html', '/espacos/', '/insights/']
 paths += ['/espacos/' + v['id'] + '.html' for v in all_venues]
 paths += ['/insights/' + p.name for p in sorted((base / 'insights').glob('*.html')) if p.name != 'index.html']
 # No artificial modification dates: update lastmod only with verified editorial history.

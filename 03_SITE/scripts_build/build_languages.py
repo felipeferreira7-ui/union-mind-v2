@@ -18,6 +18,13 @@ VOID = set('area base br col embed hr img input link meta param source track wbr
 LEGACY = {'sobre-nos': '/#fundador', 'portfolio': '/#cases',
           'servicos/organizacao-de-eventos': '/servicos/eventos-corporativos.html',
           'servicos/cenografia-e-estandes': '/servicos/estandes-e-cenografia.html'}
+# This campaign page has reviewed English copy that is not a line-for-line
+# translation of the Portuguese lead form.
+MANUAL_ENGLISH = {
+    '/checklist-convencao.html',
+    '/insights/case-convencao-mensagem-operacao.html',
+    '/insights/case-convencao-abertura-de-portas.html',
+}
 
 
 class Node:
@@ -203,6 +210,8 @@ def main():
     paths += ['/servicos/'+p.name for p in sorted((ROOT/'servicos').glob('*.html'))]
     paths = list(dict.fromkeys(paths))
     for path in paths:
+        if path in MANUAL_ENGLISH:
+            continue
         p=ROOT/route(path).lstrip('/')
         source=p.read_text(encoding='utf-8')
         p.write_text(build(source,path,set(paths),'pt'),encoding='utf-8')
