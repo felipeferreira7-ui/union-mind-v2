@@ -15,11 +15,13 @@ def prepare(destination):
         shutil.copy2(SOURCE / name, destination / name)
     for name in ['espacos', 'insights', 'servicos', 'en', 'sobre-nos', 'portfolio']:
         shutil.copytree(SOURCE / name, destination / name)
-    # Brand manuals and commercial documents are not website media.
+    # Brand manuals and commercial documents are internal material. The only
+    # PDF intentionally published is the lead magnet in assets/downloads.
     media_extensions = {'.jpg', '.jpeg', '.png', '.webp', '.avif', '.svg', '.gif',
-                        '.ico', '.woff', '.woff2', '.ttf', '.mp4', '.webm', '.pdf'}
+                        '.ico', '.woff', '.woff2', '.ttf', '.mp4', '.webm'}
     for asset in (SOURCE / 'assets').rglob('*'):
-        if asset.is_file() and asset.suffix.lower() in media_extensions:
+        is_download_pdf = asset.suffix.lower() == '.pdf' and asset.parent == SOURCE / 'assets' / 'downloads'
+        if asset.is_file() and (asset.suffix.lower() in media_extensions or is_download_pdf):
             target = destination / asset.relative_to(SOURCE)
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(asset, target)

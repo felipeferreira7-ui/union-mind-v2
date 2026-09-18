@@ -227,9 +227,11 @@ def main():
         p=ROOT/old/'index.html';p.parent.mkdir(parents=True,exist_ok=True)
         canonical=ORIGIN+target.split('#')[0]
         p.write_text('<!DOCTYPE html>\n<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Union Mind</title><meta name="robots" content="noindex, follow"><link rel="canonical" href="'+canonical+'"><meta http-equiv="refresh" content="0;url='+target+'"></head><body><p>Esta página mudou de endereço. <a href="'+target+'">Continue no site da Union Mind.</a></p></body></html>\n',encoding='utf-8')
-    # Both development mirrors retain noindex and the production canonical.
+    # The maintained development mirror retains noindex and the production canonical.
+    # The old `index-v2-preview.html` was a duplicate local artifact and is no
+    # longer generated.
     home=(ROOT/'index.html').read_text(encoding='utf-8')
-    for name in ['index-v2.html','index-v2-preview.html']:
+    for name in ['index-v2.html']:
         (ROOT/name).write_text(home.replace('<head>', '<head>\n<meta name="robots" content="noindex, follow">',1),encoding='utf-8')
     print(f'Built {len(paths)} static PT/EN pairs, reciprocal hreflang, sitemap ({len(paths)*2} URLs) and {len(LEGACY)} legacy redirects.')
 
