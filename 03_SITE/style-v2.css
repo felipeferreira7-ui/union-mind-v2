@@ -848,6 +848,54 @@ nav a.labs-link { color: var(--wine); font-weight: 600; }
     }
 }
 
+/* Brand marks have different proportions and transparent margins in their source files. */
+.union-home .logos-row {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(88px, 1fr));
+    flex: 1;
+    gap: 1.25rem;
+    width: 100%;
+}
+.union-home .logo-item {
+    width: 100%;
+    max-width: 118px;
+    height: 46px;
+    overflow: hidden;
+}
+.union-home .logo-item img {
+    width: auto;
+    height: auto;
+    max-width: 90%;
+    max-height: 30px;
+}
+.union-home .logo-item--diase img {
+    width: 220px;
+    max-width: none;
+    max-height: none;
+}
+.union-home .logo-item--comgas img {
+    width: 150px;
+    max-width: none;
+    max-height: none;
+}
+.union-home .logo-item--eqlibri img {
+    width: 80px;
+    max-width: none;
+    max-height: none;
+}
+.union-home .logo-item--toddy img {
+    width: 60px;
+    max-width: none;
+    max-height: none;
+}
+@media (max-width: 600px) {
+    .union-home .logos-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem 1.25rem;
+    }
+    .union-home .logo-item { max-width: none; }
+}
+
 /* =============================================
    FAIRS SEO
    ============================================= */
