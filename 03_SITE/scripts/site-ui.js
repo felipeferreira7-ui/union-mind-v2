@@ -13,11 +13,23 @@ window.UnionUI = {
         const value = new URLSearchParams(window.location.search).get('service');
         return this.services.includes(value) ? value : '';
     },
+    campaign() {
+        // Keep attribution useful without ever storing a full query string or free-form values.
+        const params = new URLSearchParams(window.location.search);
+        const context = {};
+        for (const name of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content']) {
+            const value = params.get(name);
+            if (value && /^[a-z0-9_-]{1,80}$/i.test(value)) context[name] = value;
+        }
+        return context;
+    },
     lead(formId) {
         // Never include a person's name, email, company, message or query string.
+        const campaign = this.campaign();
         this.track('generate_lead', { form_id: formId,
-            lead_source: 'website_form', service: this.service() || 'general',
-            language: this.language() });
+            lead_source: campaign.utm_source || 'website_form',
+            campaign: campaign.utm_campaign || 'none',
+            service: this.service() || 'general', language: this.language() });
     },
     apply(lang, translations, metadata) {
         if (!translations[lang]) return;
@@ -54,6 +66,7 @@ window.UnionUI = {
                 // Public venue context survives a language change on the contact page.
                 const venue = new URLSearchParams(window.location.search).get('venue');
                 if (venue && venue.length < 150) url.searchParams.set('venue', venue);
+                for (const [name, value] of Object.entries(this.campaign())) url.searchParams.set(name, value);
                 if (location.hash && document.getElementById(location.hash.slice(1))) url.hash = location.hash;
                 el.href = url.href;
             }
@@ -77,7 +90,12 @@ window.UnionUI = {
 document.addEventListener('DOMContentLoaded', () => {
     // Context is sent to the lead inbox; it does not change required form fields.
     document.querySelectorAll('form[action*="formspree.io"]').forEach(form => {
-        for (const [name, value] of [['servico', UnionUI.service() || 'geral'], ['idioma', UnionUI.language()]]) {
+        const context = {
+            servico: UnionUI.service() || 'geral',
+            idioma: UnionUI.language(),
+            ...UnionUI.campaign()
+        };
+        for (const [name, value] of Object.entries(context)) {
             let input = form.querySelector('input[name="' + name + '"]');
             if (!input) { input = document.createElement('input'); input.type = 'hidden'; input.name = name; form.appendChild(input); }
             input.setAttribute('value', value);
