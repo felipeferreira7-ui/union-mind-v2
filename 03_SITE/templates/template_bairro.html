@@ -30,9 +30,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&amp;family=Space+Mono:wght@400;700&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
 
-    <title>Agência de Eventos Corporativos - [BAIRRO_NOME] | Union Mind</title>
+    <title>Eventos corporativos em [BAIRRO_NOME] | Union Mind</title>
     <link rel="icon" type="image/png" href="../assets/logos/favicon.png">
-    <meta name="description" content="Planejamento e produção de eventos corporativos em [BAIRRO_NOME]. Equipe bilíngue e coordenação do briefing à entrega.">
+    <meta name="description" content="Planejamento e produção de eventos corporativos em [BAIRRO_NOME]. Coordenamos espaço, fornecedores, convidados e operação com sua equipe.">
     <link rel="canonical" href="https://unionmind.solutions/espacos/[URL_SLUG].html">
     <meta name="google-site-verification" content="gyoxtwy0MKTHFRg2MF3PFE1Vx5F-Lf4if-KB_uh6Wnw">
 
@@ -136,6 +136,7 @@
                             <p style="font-size: 1.1rem; color: var(--gray-text);" data-i18n="tmpl-bairro-p2">A escolha da região faz parte do planejamento: deslocamento dos convidados, acesso, perfil do espaço e infraestrutura precisam combinar com o evento.</p>
                         </div>
                         <p style="font-size: 1.1rem; color: var(--gray-text);" data-i18n="tmpl-bairro-p3">Definimos o escopo com sua equipe e verificamos a disponibilidade de espaços e fornecedores. A liderança de produção acompanha as decisões até a execução.</p>
+                        <p style="margin-top: 1.5rem;"><a href="/servicos/eventos-corporativos.html" style="color: var(--blue); font-weight: 700; text-decoration: underline; text-underline-offset: 0.25em;" data-i18n="venue-service-link">Veja como produzimos eventos corporativos →</a></p>
                     </div>
                     <div style="display: flex; flex-direction: column; gap: 2rem;">
                         <div>
@@ -346,6 +347,7 @@ const localTranslations = {
         "tmpl-bairro-footer": "Union Mind: criação, planejamento e produção com liderança próxima.",
         "venue-talk": "Converse sobre seu evento →",
         "venue-directory": "Consultar outros espaços",
+        "venue-service-link": "Veja como produzimos eventos corporativos →",
         "venue-portfolio-context": "Projetos do portfólio da Union. As imagens não indicam realização neste espaço.",
         "footer-location": "  ·  © 2026 Union Mind · São Paulo, Brasil"
     },
@@ -399,11 +401,12 @@ const localTranslations = {
         "detail-97": "For short lead times, we check venue and supplier availability before confirming the production schedule.",
         "venue-talk": "Let’s plan your event →",
         "venue-directory": "Browse other venues",
+        "venue-service-link": "How we produce corporate events →",
         "venue-portfolio-context": "Projects from Union’s portfolio. These images do not imply production at this venue.",
         "footer-location": "  ·  © 2026 Union Mind · São Paulo, Brazil"
     }
 };
-const pageMetadata = {"pt": {"title": "Agência de Eventos Corporativos - [BAIRRO_NOME] | Union Mind", "description": "Planejamento e produção de eventos corporativos em [BAIRRO_NOME]. Equipe bilíngue e coordenação do briefing à entrega."}, "en": {"title": "Corporate Event Agency - [BAIRRO_NOME] | Union Mind", "description": "Corporate event planning and production at [BAIRRO_NOME]. English-speaking team and coordination from briefing to delivery."}};
+const pageMetadata = {"pt": {"title": "Eventos corporativos em [BAIRRO_NOME] | Union Mind", "description": "Planejamento e produção de eventos corporativos em [BAIRRO_NOME]. Coordenamos espaço, fornecedores, convidados e operação com sua equipe."}, "en": {"title": "Corporate events in [BAIRRO_NOME] | Union Mind", "description": "Corporate event planning and production in [BAIRRO_NOME]. We coordinate venues, suppliers, guests and operations with your team."}};
 function switchLanguage(lang) {
     if (!localTranslations[lang]) return;
     document.title = pageMetadata[lang].title;

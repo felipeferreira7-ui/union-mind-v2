@@ -184,6 +184,10 @@ def build(source, path, paths, lang):
             resolved=urlsplit(urljoin(ORIGIN+path,url))
             target=resolved.path
             query=resolved.query
+            # /index.html and / are the same home page. Normalize before
+            # mapping internal links to the matching language.
+            if n.tag=='a' and target=='/index.html' and '/' in paths:
+                target='/'
             if n.tag=='a' and path.startswith('/servicos/') and target=='/' and resolved.fragment=='configurador' and not query:
                 query='service='+Path(path).stem
             if n.tag=='a' and target in paths:

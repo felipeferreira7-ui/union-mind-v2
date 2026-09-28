@@ -1,6 +1,6 @@
 # Union Mind — manual do site
 
-Atualizado em 18/09/2026. Site estático publicado no GitHub Pages em [unionmind.solutions](https://unionmind.solutions/). A fonte de verdade é esta pasta; o repositório público contém somente `03_SITE` e o workflow de publicação.
+Atualizado em 27/09/2026. Site estático publicado no GitHub Pages em [unionmind.solutions](https://unionmind.solutions/). A fonte de verdade é esta pasta; o repositório público contém somente `03_SITE` e o workflow de publicação.
 
 ## Estado publicado
 
@@ -18,6 +18,7 @@ SEO técnico, GEO e medição estão implementados. Isso não garante indexaçã
 - `labs.html`, `insights/*.html` e `servicos/*.html`: fontes em português com dicionários PT/EN. Não editar a cópia em `en/` diretamente.
 - `checklist-convencao.html` e os dois cases de convenção possuem versão inglesa revisada manualmente em `en/`; preservar a equivalência das duas páginas ao editar.
 - `templates/template_*.html`: fontes das páginas de espaços. Gerar novamente depois de qualquer alteração nelas.
+- As páginas de espaços ligam cada tipo de busca ao serviço correspondente. O modelo de feiras apresenta a operação própria de cenografia da Union; não tratar “Union Ceno & Design” como marca ou pessoa jurídica existente sem decisão formal.
 - `scripts_build/space_directory.html`: fonte do diretório de espaços.
 - `scripts/site-ui.js`: interação, idioma, contexto dos serviços, formulário e WhatsApp.
 - `scripts/analytics.js`: implementação GA4. Não adicionar GTM ou outra tag GA4 em paralelo.
