@@ -30,9 +30,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&amp;family=Space+Mono:wght@400;700&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
 
-    <title>Agência de Eventos Corporativos - [VENUE_NAME] | Union Mind</title>
+    <title>Convenções de vendas em [VENUE_NAME] | Union Mind</title>
     <link rel="icon" type="image/png" href="../assets/logos/favicon.png">
-    <meta name="description" content="Planejamento e produção de eventos corporativos em [VENUE_NAME]. Equipe bilíngue e coordenação do briefing à entrega.">
+    <meta name="description" content="Planejamento e produção de convenções de vendas em [VENUE_NAME]. Coordenamos convidados, conteúdo, logística e operação conforme o projeto.">
     <link rel="canonical" href="https://unionmind.solutions/espacos/[URL_SLUG].html">
     <meta name="google-site-verification" content="gyoxtwy0MKTHFRg2MF3PFE1Vx5F-Lf4if-KB_uh6Wnw">
 
@@ -136,6 +136,7 @@
                             <p style="font-size: 1.1rem; color: var(--gray-text);" data-i18n="tmpl-resort-p2">Uma convenção exige alinhamento entre viagens, hospedagem, plenárias e programação. Verificamos com o espaço disponibilidade, infraestrutura e regras antes de confirmar as entregas.</p>
                         </div>
                         <p style="font-size: 1.1rem; color: var(--gray-text);" data-i18n="tmpl-resort-p3">Organizamos responsabilidades e cronograma para que criação, logística e produção sigam o mesmo planejamento. Você acompanha decisões e aprovações com a liderança do projeto.</p>
+                        <p style="margin-top: 1.5rem;"><a href="/servicos/convencoes-de-vendas.html" style="color: var(--blue); font-weight: 700; text-decoration: underline; text-underline-offset: 0.25em;" data-i18n="venue-service-link">Veja como planejamos convenções de vendas →</a></p>
                     </div>
                     <div style="display: flex; flex-direction: column; gap: 2rem;">
                         <div>
@@ -322,6 +323,7 @@ const localTranslations = {
         "faq-q-resort-3": "A Union Mind faz a direção técnica da plenária no [VENUE_NAME]?",
         "venue-talk": "Converse sobre seu evento →",
         "venue-directory": "Consultar outros espaços",
+        "venue-service-link": "Veja como planejamos convenções de vendas →",
         "venue-portfolio-context": "Projetos do portfólio da Union. As imagens não indicam realização neste espaço.",
         "footer-location": "  ·  © 2026 Union Mind · São Paulo, Brasil"
     },
@@ -369,11 +371,12 @@ const localTranslations = {
         "detail-82": "Yes. Stage management, audiovisual production, LED screens, the run of show and speaker coordination are integrated services. We work from one detailed schedule, from opening to closing.",
         "venue-talk": "Let’s plan your event →",
         "venue-directory": "Browse other venues",
+        "venue-service-link": "How we plan sales conventions →",
         "venue-portfolio-context": "Projects from Union’s portfolio. These images do not imply production at this venue.",
         "footer-location": "  ·  © 2026 Union Mind · São Paulo, Brazil"
     }
 };
-const pageMetadata = {"pt": {"title": "Agência de Eventos Corporativos - [VENUE_NAME] | Union Mind", "description": "Planejamento e produção de eventos corporativos em [VENUE_NAME]. Equipe bilíngue e coordenação do briefing à entrega."}, "en": {"title": "Corporate Event Agency - [VENUE_NAME] | Union Mind", "description": "Corporate event planning and production at [VENUE_NAME]. English-speaking team and coordination from briefing to delivery."}};
+const pageMetadata = {"pt": {"title": "Convenções de vendas em [VENUE_NAME] | Union Mind", "description": "Planejamento e produção de convenções de vendas em [VENUE_NAME]. Coordenamos convidados, conteúdo, logística e operação conforme o projeto."}, "en": {"title": "Sales conventions at [VENUE_NAME] | Union Mind", "description": "Sales convention planning and production at [VENUE_NAME]. We coordinate guests, content, logistics and on-site operations around the brief."}};
 function switchLanguage(lang) {
     if (!localTranslations[lang]) return;
     document.title = pageMetadata[lang].title;
