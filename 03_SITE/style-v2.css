@@ -1534,6 +1534,8 @@ footer .footer-venues a, .footer-links-section strong { color: #c6cbd4; }
 .direct-contact-card > span { font-size: .95rem; font-weight: 500; color: #263c59; }
 .direct-contact-card a { font-size: clamp(1.05rem, 1.5vw, 1.3rem); font-weight: 600; color: #174780; text-decoration: underline; text-underline-offset: .2em; overflow-wrap: anywhere; max-width: 100%; }
 .direct-contact-card small { font-size: .9rem; line-height: 1.5; color: #45505e; }
+.supplier-route { margin: 1.1rem 0 0; font-size: .85rem; line-height: 1.55; color: #65707d; }
+.supplier-route a { color: #174780; text-decoration: underline; text-underline-offset: .18em; }
 @media (max-width: 900px) {
     .union-home .hero { padding: 3.5rem 0; }
     .union-home .hero-inner { gap: 2.5rem; }
